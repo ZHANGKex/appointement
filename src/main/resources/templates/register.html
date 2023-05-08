@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index MVC application</title>
+    <link rel="stylesheet" href="../static/css/myFirstStyle.css">
+    <script src="../static/js/myFirstScript.js" type="text/javascript"></script>
+</head>
+<body>
+<h1 id="hello">Index page of the MVC application(Lab1)
+</h1>
+<form method='post' name='form1' onsubmit="return validateMyForm()" action=''>
+    <fieldset class="fieldsetM">
+        <legend> Personal information: </legend>
+    <label for="fname">First name:
+    <input type="text" id="fname" name="fname" value="John"><br></label><br>
+    <label for="lname">Last name:
+    <input type="text" id="lname" name="lname" value="Doe"><br></label><br>
+    </fieldset>
+    <fieldset class="fieldsetM">
+        <legend> Sex: </legend>
+    <p>Choose your sex:</p>
+
+      <input type="radio" id="male" name="sex" value="Male" onclick="toogleFM()">
+      <label for="male">Male</label><br>
+      <input type="radio" id="female" name="sex" value="Female" onclick="toogleFM()">
+      <label for="female">Female</label><br>
+    </fieldset>
+    <fieldset class="fieldsetM">
+        <legend> Birth Day: </legend>
+    <label for="birth">Birth Date:
+    <input type="date" id="birth" name="birth" value=""><br></label><br>
+        </fieldset>
+    <br>
+    <input type="submit" id="send" value="Envoyer">
+</form>
+<br/>
+
+</body>
+</html>
