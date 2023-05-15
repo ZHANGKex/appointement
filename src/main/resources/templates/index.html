@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,6 +26,9 @@
                     <font class="edoc-logo">eDoc. </font>
                     <font class="edoc-logo-sub">| THE ECHANNELING PROJECT</font>
                 </td>
+                <td width="10%" sec:authorize = "isAuthenticated()" >
+                    <a href="/" th:href="@{/logout}" class="non-style-link"><p class="nav-item">LOGOUT</p></a>
+                </td>
                 <td width="10%">
                     <a href="/login"  class="non-style-link"><p class="nav-item">LOGIN</p></a>
                 </td>
@@ -43,6 +47,8 @@
                 <td  colspan="3">
                     <p class="sub-text2">How is health today, Sounds like not good!<br>Don't worry. Find your doctor online Book as you wish with eDoc. <br>
                         We offer you a free doctor channeling service, Make your appointment now.</p>
+                    <p class="heading-text">Welcome <span sec:authentication = "principal.username"></span></p>
+
                 </td>
             </tr>
             <tr>

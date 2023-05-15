@@ -8,18 +8,31 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#" th:href="@{/patient}">Patient Management</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" th:href="@{/home}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#"></a>
+            <a class="nav-item nav-link" href="#"></a>
+            <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+        </div>
+    </div>
+</nav>
 <br>
 <div class="container">
     <div class="row">
         <div class="col-lg-6 col-md-offset-3 col-sm-6 container justify-content-center card">
             <!--success info-->
             <div th:if = "${param.success}">
-                <div class="alert alert-info">You've successfully registered!</div>
+                <div class="alert alert-info">You've successfully added!</div>
             </div>
-            <h1 class="text-center">New Patient Registration</h1>
+            <h1 class="text-center">Add New Patient</h1>
             <div class="card-body">
-                <form th:action="@{/register}" th:object="${patient}" method="post">
+                <form th:action="@{/patient}" th:object="${patient}" method="post">
                     <div class="form-group">
                     <label>Name:</label>
                     <input
@@ -124,10 +137,7 @@
                     </select><br/><br/>
                     </div>-->
                         <div class="box-footer">
-                    <button type="submit" class="btn btn-success">Register</button>
-                            <span > Aleardy signed up?
-                                <a href="/" th:href="@{/login}">Login here</a>
-                            </span>
+                    <button type="submit" class="btn btn-primary">Add</button>
                         </div>
 
                 </form>

@@ -3,7 +3,7 @@ package com.isep.appointement.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "patient")
+@Table
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,8 +13,11 @@ public class Patient {
     @Column(name = "username", nullable = false, length = 50)
     private String username;
 
-    @Column(name = "password", nullable = false, length = 50)
+    @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "role", nullable = false, length = 20)
+    private Roles role = Roles.Patient;
 
     @Column(name = "name", nullable = false, length = 50)
     private String name;
@@ -55,8 +58,6 @@ public class Patient {
     public Patient() {
     }
 
-//All attributes
-
     public Patient(Long id, String username, String password, String name, int age, int sex, String address, String caseImg, int telephone, String mail, String idNumber, String job, String allergens, String chronicDiseases, String geneticDiseases) {
         this.id = id;
         this.username = username;
@@ -87,23 +88,12 @@ public class Patient {
         this.mail = mail;
         this.idNumber = idNumber;
     }
-
-// getters and setters
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getUsername() {
@@ -122,6 +112,22 @@ public class Patient {
         this.password = password;
     }
 
+    public Roles getRoles() {
+        return role;
+    }
+
+    public void setRoles(Roles roles) {
+        this.role = roles;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getAge() {
         return age;
     }
@@ -130,12 +136,24 @@ public class Patient {
         this.age = age;
     }
 
-    public int getSex() {
-        return sex;
+    public String getSex() {
+        if(sex == 0){
+            return "female";
+        }
+        else if(sex == 1){
+            return "male";
+        }
+        return "other";
     }
 
-    public void setSex(int sex) {
-        this.sex = sex;
+    public void setSex(String sex) {
+        if(sex == "female"){
+            this.sex = 0;
+        }
+        else if(sex == "male"){
+            this.sex = 1;
+        }
+        this.sex = 2;
     }
 
     public String getAddress() {
@@ -212,7 +230,7 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{" +
+        return "Student{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
