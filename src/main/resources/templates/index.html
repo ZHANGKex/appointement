@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/animations.css">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <title>eDoc</title>
+    <style>
+        table{
+            animation: transitionIn-Y-bottom 0.5s;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="full-height">
+    <div>
+        <table style="border: 0">
+            <tr>
+                <td style="width: 80%">
+                    <font class="edoc-logo">eDoc. </font>
+                    <font class="edoc-logo-sub">| THE ECHANNELING PROJECT</font>
+                </td>
+                <td width="10%" sec:authorize = "isAuthenticated()" >
+                    <a href="/" th:href="@{/logout}" class="non-style-link"><p class="nav-item">LOGOUT</p></a>
+                </td>
+                <td width="10%">
+                    <a href="/login"  class="non-style-link"><p class="nav-item">LOGIN</p></a>
+                </td>
+                <td  style="width: 10%">
+                    <a href="/register" class="non-style-link"><p class="nav-item" style="padding-right: 10px;">REGISTER</p></a>
+                </td>
+            </tr>
+
+            <tr>
+                <td  colspan="3">
+                    <p class="heading-text">Avoid Hassles & Delays.</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td  colspan="3">
+                    <p class="sub-text2">How is health today, Sounds like not good!<br>Don't worry. Find your doctor online Book as you wish with eDoc. <br>
+                        We offer you a free doctor channeling service, Make your appointment now.</p>
+                    <p class="heading-text">Welcome <span sec:authentication = "principal.username"></span></p>
+
+                </td>
+            </tr>
+            <tr>
+
+                <td colspan="3">
+                    <div>
+                        <a href="/pretriage" >
+                            <input type="button" value="Make Appointment" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
+                        </a>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="3">
+
+                </td>
+            </tr>
+        </table>
+        <p class="sub-text2 footer-hashen">projet Wahahaha.</p>
+    </div>
+
+</div>
+</body>
+</html>

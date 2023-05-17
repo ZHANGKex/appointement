@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login </title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="../static/css/loginStyles.css">
+    <!-- custom css file link  -->
+    <script src="../static/js/load-header.js"></script>
+
+</head>
+<body>
+<div id="header-placeholder"></div>
+
+<div class="background"></div>
+<div class="main-container">
+    <div class="image-container"></div><br>
+    <div class="login-container">
+        <div class="row">
+        <div class="col-lg-5 col-md-6 col-sm-6 container justify-content-left card">
+
+<!--        <h1>Login</h1>-->
+        <div class="card-body">
+        <form th:action="@{/login}" method="post">
+              <!--error message-->
+            <div th:if = "${param.error}">
+                <div class="alert alert-danger">Invalid </div>
+            </div>
+
+            <!--logout message-->
+            <div th:if = "${param.logout}">
+                <div class="alert alert-info">You've been logged out </div>
+            </div>
+            <div class="form-group">
+                <label>username:</label>
+                <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        class="form-control"
+                        placeholder="Enter your username"/>
+            </div>
+            <div class="form-group">
+                <label>password:</label>
+                <input
+                        type="text"
+                        id="password"
+                        name="password"
+                        class="form-control"
+                        placeholder="Enter your password"/>
+
+            </div>
+            <div class="box-footer">
+                <div class="form-group">
+            <button type="submit"
+                    id="login-submit"
+                    name="login-submit"
+                    class="btn btn-success">Login</button>
+                    <span > Not sign up?
+                                <a href="/" th:href="@{/register}">Sign up</a>
+                            </span>
+                </div>
+            </div>
+        </form>
+<!--            <div class="form-group">
+
+           </div>-->
+        </div>
+
+        </div>
+        </div>
+
+
+</div>
+<!-- footer section starts  -->
+
+
+
+<!-- footer section ends -->
+
+</body>
+</html>

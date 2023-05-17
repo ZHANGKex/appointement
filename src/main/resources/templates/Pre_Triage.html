@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预检分诊问卷</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<h1>Where do you feel uncomfortable?</h1>
+<div class="select-container">
+    <select class="styled-select" id="discomfortLocation" onchange="displayQuestions()">
+        <option value="" disabled selected>Select area</option>
+        <option value="head">Head</option>
+        <option value="abdomen">Abdomen</option>
+        <option value="chest">Chest</option>
+        <option value="leg">Leg</option>
+    </select>
+</div>
+
+<div id="headQuestions" class="hidden">
+    <h2>If you selected "Head", please answer the following questions:</h2>
+    <h3>Does your headache come with other symptoms:</h3>
+    <input type="radio" id="optionA1" name="headacheSymptoms" value="A">
+    <label for="optionA1">A. Fatigue, tension, insomnia, memory loss, mood instability</label><br>
+    <input type="radio" id="optionB1" name="headacheSymptoms" value="B">
+    <label for="optionB1">B. Nausea and vomiting, weakness in one side of the body, speechlessness</label><br>
+    <input type="radio" id="optionC1" name="headacheSymptoms" value="C">
+    <label for="optionC1">C. Dizziness, tinnitus, or nasal congestion, purulent or bloody nasal discharge</label><br>
+    <input type="radio" id="optionD1" name="headacheSymptoms" value="D">
+    <label for="optionD1">D. Hypertension or kidney disease, or headache with fever</label><br>
+    <input type="radio" id="optionE1" name="headacheSymptoms" value="E">
+    <label for="optionE1">E. Light sensitivity, blurred vision or pain around the eyes and above the orbit</label><br>
+    <input type="radio" id="optionF1" name="headacheSymptoms" value="F">
+    <label for="optionF1">F. Closely related to horizontal head rotation, accompanied by dizziness and numbness in the arm</label><br>
+    <input type="radio" id="optionG1" name="headacheSymptoms" value="G">
+    <label for="optionG1">G. Have you suffered trauma, is there bleeding</label><br>
+    <button onclick="showSuggestion()">Submit</button>
+</div>
+
+<div id="abdomenQuestions" class="hidden">
+    <h2>If you selected "Abdomen", please answer the following questions:</h2>
+    <h3>Does your abdominal pain come with other symptoms:</h3>
+    <input type="radio" id="optionA2" name="abdomenSymptoms" value="A">
+    <label for="optionA2">A. Pain in the upper right or lower abdomen</label><br>
+    <input type="radio" id="optionB2" name="abdomenSymptoms" value="B">
+    <label for="optionB2">B. Pain in the upper middle abdomen</label><br>
+    <input type="radio" id="optionC2" name="abdomenSymptoms" value="C">
+    <label for="optionC2">C. Pain in the upper left abdomen</label><br>
+    <input type="radio" id="optionD2" name="abdomenSymptoms" value="D">
+    <label for="optionD2">D. Pain in the lower middle abdomen</label><br>
+    <input type="radio" id="optionE2" name="abdomenSymptoms" value="E">
+    <label for="optionE2">E. Pain throughout the abdomen</label><br>
+    <input type="radio" id="optionF2" name="abdomenSymptoms" value="F">
+    <label for="optionF2">F. Severe pain, even unbearable</label><br>
+    <button onclick="showSuggestion()">Submit</button>
+</div>
+
+<div id="chestQuestions" class="hidden">
+    <h2>If you selected "Chest", please answer the following questions:</h2>
+    <h3>Does your chest pain come with other symptoms:</h3>
+    <input type="radio" id="optionA3" name="chestSymptoms" value="A">
+    <label for="optionA3">A. Associated with coughing, worsens during deep inhalation or exhalation</label><br>
+    <input type="radio" id="optionB3" name="chestSymptoms" value="B">
+    <label for="optionB3">B. Severe chest pain suddenly appears after physical activity, accompanied by difficulty breathing</label><br>
+    <input type="radio" id="optionC3" name="chestSymptoms" value="C">
+    <label for="optionC3">C. Sudden tearing pain in the front chest and back, accompanied by high blood pressure</label><br>
+    <input type="radio" id="optionD3" name="chestSymptoms" value="D">
+    <label for="optionD3">D. Chest pain or anterior chest pain, with a feeling of pressure, accompanied by palpitations and shortness of breath</label><br>
+    <input type="radio" id="optionE3" name="chestSymptoms" value="E">
+    <label for="optionE3">E. Caused by fractures or other traumas, pain worsens when bending or leaning to the side</label><br>
+    <button onclick="showSuggestion()">Submit</button>
+</div>
+
+
+<div id="legQuestions" class="hidden">
+    <h2>If you selected "Leg", please answer the following questions:</h2>
+    <h3>Does your leg pain come with other symptoms:</h3>
+    <input type="radio" id="optionA5" name="legSymptoms" value="A">
+    <label for="optionA5">A. Pain on the outside of the lower limb, pain extending to the buttocks or waist</label><br>
+    <input type="radio" id="optionB5" name="legSymptoms" value="B">
+    <label for="optionB5">B. Pain in the joints of the lower and upper legs after exercise</label><br>
+    <input type="radio" id="optionC5" name="legSymptoms" value="C">
+    <label for="optionC5">C. Red, swollen and painful ankle and toe joints, with a feeling of heat, especially after eating seafood or drinking beer</label><br>
+    <input type="radio" id="optionD5" name="legSymptoms" value="D">
+    <label for="optionD5">D. Swelling of the calf after sitting for a long time, pain when pressing with fingers, pain when walking but relief when resting</label><br>
+    <input type="radio" id="optionE5" name="legSymptoms" value="E">
+    <label for="optionE5">E. Bilateral symmetrical pain in multiple joints throughout the body, such as the knee joints or small joints of the hands</label><br>
+    <button onclick="showSuggestion()">Submit</button>
+</div>
+
+<div id="suggestion" class="hidden">
+    <h2>I suggest you ：</h2>
+    <p id="department"></p>
+</div>
+
+
+<script>
+    function displayQuestions() {
+        resetSuggestion();
+        const location = document.getElementById("discomfortLocation").value;
+        const headQuestions = document.getElementById("headQuestions");
+        const abdomenQuestions = document.getElementById("abdomenQuestions");
+        const chestQuestions = document.getElementById("chestQuestions");
+        const legQuestions = document.getElementById("legQuestions");
+
+        headQuestions.classList.add("hidden");
+        abdomenQuestions.classList.add("hidden");
+        chestQuestions.classList.add("hidden");
+        legQuestions.classList.add("hidden");
+
+        switch (location) {
+            case "head":
+                headQuestions.classList.remove("hidden");
+                headQuestions.classList.add("fade-in");
+                break;
+            case "abdomen":
+                abdomenQuestions.classList.remove("hidden");
+                abdomenQuestions.classList.add("fade-in");
+                break;
+            case "chest":
+                chestQuestions.classList.remove("hidden");
+                chestQuestions.classList.add("fade-in");
+                break;
+            case "leg":
+                legQuestions.classList.remove("hidden");
+                legQuestions.classList.add("fade-in");
+                break;
+        }
+    }
+
+
+    function showSuggestion() {
+        const headOption = document.querySelector('input[name="headacheSymptoms"]:checked');
+        const abdomenOption = document.querySelector('input[name="abdomenSymptoms"]:checked');
+        const chestOption = document.querySelector('input[name="chestSymptoms"]:checked');
+        const legOption = document.querySelector('input[name="legSymptoms"]:checked');
+        let selectedOption = '';
+
+        if (headOption) {
+            selectedOption = headOption.value + '1';
+        } else if (abdomenOption) {
+            selectedOption = abdomenOption.value + '2';
+        } else if (chestOption) {
+            selectedOption = chestOption.value + '3';
+        } else if (legOption) {
+            selectedOption = legOption.value + '4';
+        }
+
+        const department = document.getElementById("department");
+        const suggestion = document.getElementById("suggestion");
+        let suggestedDepartment;
+
+        switch (selectedOption) {
+            case "A1":
+                suggestedDepartment = "Neurology";
+                break;
+            case "B1":
+                suggestedDepartment = "Emergency Neurology";
+                break;
+            case "C1":
+                suggestedDepartment = "Otolaryngology";
+                break;
+            case "D1":
+                suggestedDepartment = "Internal Medicine";
+                break;
+            case "E1":
+                suggestedDepartment = "Ophthalmology";
+                break;
+            case "F1":
+                suggestedDepartment = "Spine Surgery or Rehabilitation";
+                break;
+            case "G1":
+                suggestedDepartment = "Neurosurgery";
+                break;
+            case "A2":
+                suggestedDepartment = "Surgery";
+                break;
+            case "B2":
+                suggestedDepartment = "Gastroenterology";
+                break;
+            case "C2":
+                suggestedDepartment = "General Surgery or Gastroenterology";
+                break;
+            case "D2":
+                suggestedDepartment = "Gynecology or Urology";
+                break;
+            case "E2":
+                suggestedDepartment = "Gastroenterology";
+                break;
+            case "F2":
+                suggestedDepartment = "Emergency Department or call emergency";
+                break;
+            case "A3":
+                suggestedDepartment = "Respiratory Medicine or Thoracic Surgery";
+                break;
+            case "B3":
+                suggestedDepartment = "Thoracic Surgery";
+                break;
+            case "C3":
+                suggestedDepartment = "Emergency Department or Vascular Surgery";
+                break;
+            case "D3":
+                suggestedDepartment = "Cardiology";
+                break;
+            case "E3":
+                suggestedDepartment = "Orthopedics or Thoracic Surgery";
+                break;
+            case "A4":
+                suggestedDepartment = "Orthopedic Spine Surgery";
+                break;
+            case "B4":
+                suggestedDepartment = "Orthopedics";
+                break;
+            case "C4":
+                suggestedDepartment = "Endocrinology or Rheumatology and Immunology";
+                break;
+            case "D4":
+                suggestedDepartment = "Vascular Surgery";
+                break;
+            case "E4":
+                suggestedDepartment = "Rheumatology and Immunology";
+                break;
+            default:
+                suggestedDepartment = "Unknown";
+        }
+
+        department.textContent = suggestedDepartment;
+        suggestion.classList.remove("hidden");
+    }
+
+    function resetSuggestion() {
+        const suggestion = document.getElementById("suggestion");
+        suggestion.classList.add("hidden");
+    }
+
+
+
+</script>
+</body>
+</html>
