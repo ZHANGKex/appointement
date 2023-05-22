@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>医院挂号预约系统</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<h1>欢迎使用医院挂号预约系统</h1>
+<h2>请选择医生:</h2>
+<div id="doctor-list">
+    <!-- 动态生成医生列表 -->
+</div>
+<h2>请选择预约时间:</h2>
+<details>
+    <summary>选择预约地点(非必选)</summary>
+    <div id="place-list">
+        <!-- 动态生成预约地点列表 -->
+    </div>
+</details>
+<details>
+    <summary>选择预约时间(必选)</summary>
+    <div id="time-list">
+        <!-- 动态生成预约时间列表 -->
+    </div>
+</details>
+<button onclick="submitAppointment()">提交预约</button>
+<script src="js/script.js"></script>
+</body>
+</html>
