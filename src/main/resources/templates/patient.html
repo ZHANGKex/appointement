@@ -39,7 +39,6 @@
   <thead class="thead-light">
   <tr>
     <th scope="col">id</th>
-    <th scope="col">username</th>
     <th scope="col">password</th>
     <th scope="col">name</th>
     <th scope="col">Email</th>
@@ -47,6 +46,7 @@
     <th scope="col">idNumber</th>
     <th scope="col">Age</th>
     <th scope="col">Sex</th>
+    <th scope="col">Role</th>
     <th scope="col">Action</th>
   </tr>
   </thead>
@@ -54,14 +54,14 @@
 
   <tr th:each="patient: ${patients}">
     <td th:text="${patient.id}"></td>
-    <td th:text="${patient.username}"></td>
     <td th:text="${patient.password}"></td>
     <td th:text="${patient.name}"></td>
     <td th:text="${patient.mail}"></td>
     <td th:text="${patient.telephone}"></td>
     <td th:text="${patient.idNumber}"></td>
-    <td th:text="${patient.Age}"></td>
+    <td th:text="${patient.getAge()}"></td>
     <td th:text="${patient.getSex()}"></td>
+    <td th:text="${patient.getRole()}"></td>
     <td>
       <a th:href="@{/patient/edit/{id}(id=${patient.id})}" class="btn btn-primary">Update</a><br><br>
       <a th:href="@{/patient/{id}(id=${patient.id})}" class="btn btn-secondary">Remove</a>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Xiehe Hospital</title>
+        <link rel="stylesheet" type="text/css" href="../static/newcss/styles.css">
+		<link rel="stylesheet" type="text/css" href="../static/assets/css/sce.css"/>
+        <script src="../static/newjs/load-header.js"></script>
+    <style>
+		.tem{background-image: url("../static/img/banner1.jpg");background-size: 100%;}
+		.ten{height:70px;}
+	</style>
+    </head>
+<body class="tem">
+	<nav class="main-nav overlay clearfix ten">
+	<ul id="menu">
+        <li class="nav-home nav-current" role="presentation"><a href="/home">Home</a></li>
+        <li class="nav-about-us" role="presentation"><a href="/doctor">Doctor</a></li>
+        <li class="nav-author-page" role="presentation"><a href="/announcement">Announcement</a></li>
+        <li class="nav-author-page" role="presentation"><a href="/science">Science</a></li>
+        <li class="nav-article-example" role="presentation"><a href="/register">Registration</a></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+	</ul>
+	</nav>
+    <div id="header-placeholder"></div>
+    <div class="background"></div>
+    <div class="main-container">
+        <div class="signup-container">
+            <div th:if = "${param.success}">
+                <div class="alert alert-info">You've successfully registered!</div>
+            </div>
+            <form th:action="@{/register}" th:object="${patient}" method="post">
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" th:field = "*{name}" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" th:field = "*{mail}" required>
+
+                <label for="password">Password:</label>
+                <input type="text" id="password" name="password" th:field = "*{password}" required>
+
+<!--                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password"  required>-->
+
+                <label>telephone Number:</label>
+                <input
+                        type="text"
+                        name="telephone"
+                        th:field = "*{telephone}"
+                        class="form-control"
+                        />
+
+                <label for="birthdate">Birthdate:</label>
+                <input type="date" id="birthdate" name="birthdate"  th:field = "*{birthday}" required>
+                <br>
+                    <label>ID Number:</label>
+                    <input
+                            type="text"
+                            name="idNumber"
+                            th:field = "*{idNumber}"
+                            class="form-control"
+                            />
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" th:field="*{sex}" required>
+                    <option value="">Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select><br />
+
+                <button type="submit">Signup</button>
+            </form>
+            <div class="form-group">
+                <span>
+                    Aleardy signed up?
+                    <a href="/" th:href="@{/login}">&nbsp;&nbsp;Login here</a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

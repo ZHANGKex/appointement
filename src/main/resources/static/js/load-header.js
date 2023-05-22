@@ -90,10 +90,10 @@ const hospitals = [
     });
   }
   
-/*  // 动态生成预约地点列表
+  // 动态生成预约地点列表
   function generatePlaceList() {
     const placeList = document.getElementById("place-list");
     places.forEach((place) => {
-      const placeP}*/
+      const placeP
   
   
