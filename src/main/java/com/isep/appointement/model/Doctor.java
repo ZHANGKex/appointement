@@ -63,7 +63,13 @@ public class Doctor implements UserDetails {
     @Column(name = "available_timings", length = 255)
     private String availableTimings;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "department_id", nullable = false)
+    private Department department;
+
+
     public Doctor() {
+
     }
 
     public Doctor(int idDoc, String password, String name, int age, String sex, int telephone, String mail, String educationBackground, String specialty, String title, String resume, String receptionRequirements, String availableTimings) {
@@ -246,4 +252,5 @@ public class Doctor implements UserDetails {
     public void setAvailableTimings(String availableTimings) {
         this.availableTimings = availableTimings;
     }
+
 }

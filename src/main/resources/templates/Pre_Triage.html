@@ -95,9 +95,13 @@
 </div>
 
 <div id="suggestion" class="hidden">
-    <h2>建议您找：</h2>
-    <p id="department"></p>
+    <div id="popup" class="popup">
+        <h2>建议您找：</h2>
+        <p id="department"></p>
+        <button onclick="returnToSelection()">返回</button>
+    </div>
 </div>
+
 
 
 <script>
@@ -135,11 +139,16 @@
     }
 
 
+
     function showSuggestion() {
         const headOption = document.querySelector('input[name="headacheSymptoms"]:checked');
         const abdomenOption = document.querySelector('input[name="abdomenSymptoms"]:checked');
         const chestOption = document.querySelector('input[name="chestSymptoms"]:checked');
         const legOption = document.querySelector('input[name="legSymptoms"]:checked');
+        const popup = document.getElementById("popup");
+        const mainContent = document.querySelector("body > :not(#suggestion)");
+        const sectionsToHide = document.querySelectorAll("#headQuestions, #abdomenQuestions, #chestQuestions, #legQuestions");
+
         let selectedOption = '';
 
         if (headOption) {
@@ -230,8 +239,14 @@
                 suggestedDepartment = "未知";
         }
 
+        sectionsToHide.forEach((section) => {
+            section.classList.add("hidden");
+        });
+
         department.textContent = suggestedDepartment;
+        mainContent.style.display = "none";
         suggestion.classList.remove("hidden");
+        popup.classList.add("fade-in");
     }
 
     function resetSuggestion() {
@@ -239,8 +254,16 @@
         suggestion.classList.add("hidden");
     }
 
+    function returnToSelection() {
+        resetSuggestion();
+        const suggestion = document.getElementById("suggestion");
+        const popup = document.getElementById("popup");
+        const mainContent = document.querySelector("body > :not(#suggestion)");
 
-
+        suggestion.classList.add("hidden");
+        popup.classList.remove("fade-in");
+        mainContent.style.display = "block";
+    }
 </script>
 </body>
 </html>
