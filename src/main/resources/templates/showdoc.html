@@ -1,153 +1,189 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<title>Xiehe Hospital</title>
-<meta name="description" content="Thoughts, reviews and ideas since 1999."/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link rel="shortcut icon" href="#">
-<link rel="stylesheet" type="text/css" href="../static/assets/css/screen.css"/>
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300italic,300,400italic,700,700italic|Playfair+Display:400,700,400italic,700italic"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="../static/assets/js/masonry.min.js"></script>
-<script type="text/javascript" src="../static/assets/js/jquery.fitvids.js"></script>
-<script type="text/javascript" src="../static/assets/js/index.js"></script>
+    <meta charset="UTF-8">
+    <title>Patient Info</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/patientShow.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/yuyue.css">
+
 </head>
-<body class="home-template">
-<div class="site-wrapper">
-	<nav class="main-nav overlay clearfix">
-	<a class="blog-logo" href="/home"><img src="../static/img/logo1.png" alt=""></a>
-	<ul id="menu">
-		<li class="nav-home nav-current" role="presentation"><a href="/home">Home</a></li>
-		<li class="nav-about-us" role="presentation"><a href="/doctor">Doctor</a></li>
-		<li class="nav-author-page" role="presentation"><a href="/announcement">Announcement</a></li>
-		<li class="nav-author-page" role="presentation"><a href="/science">Science</a></li>
-		<li class="nav-article-example" role="presentation"><a href="/register">Registration</a></li>
-		<span class="socialheader">
-		<a href="#"><span class='symbol'>circletwitterbird</span></a>
-		<a href="#"><span class='symbol'>circlefacebook</span></a>
-		<a href="#"><span class='symbol'>circlegoogleplus</span></a>
-		<a href="mailto:123456@gmail.com"><span class='symbol'>circleemail</span></a>
-		</span>
-	</ul>
-	</nav>
-	<header class="main-header " style="background-image: url(../static/assets/img/intro.jpg)">
-	<div class="vertical">
-		<div class="main-header-content inner">
-			<h1 class="page-title">Xiehe Hospital</h1>
-		</div>
-	</div>
-	<a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
-	</header>
-	<main id="content" class="content" role="main">
-	<div class="wraps">
-		<img src="../static/assets/img/shadow.png" class="wrapshadow">
-		<div class="grid">
-			<div class="grid-item">
-				<article class="post">
-				<div class="wrapgriditem">
-					<header class="post-header">
-						<h2 class="post-title"><a href="yuyue.html?doctor=Belinda Raman">Belinda Raman</a></h2>
-					</header>
-					<section class="post-excerpt">
-					<p>
-						She is the president of Xiehe Hospital.Comprehensive management and prevention of coronary heart disease, hypertension, dyslipidemia, diabetes, and metabolic syndrome, to maximize the reduction of cardiovascular events.
-					</p>
-					</section>
-				</div>
-				</article>
-			</div>
-			<div class="grid-item">
-				<article class="post tag-romance">
-				<img src="../static/img/doc-5(1).jpg">
-				<div class="wrapgriditem">
-					<header class="post-header">
-					<h2 class="post-title"><a href="article.html">Leonard Knox</a></h2>
-					</header>
-					<section class="post-excerpt">
-					<p>
-						He is the vice president of Xiehe Hospital.Strictly follow the indications of interventional diagnosis and treatment of coronary and peripheral vascular diseases.Early diagnosis and individualized treatment of heart failure caused by various cardiomyopathy and other causes.
-					</p>
-					</section>
-				</div>
-				</article>
-			</div>
-			<div class="grid-item">
-				<article class="post">
-				<div class="wrapgriditem">
-					<header class="post-header">
-					<h2 class="post-title"><a href="article.html">Milo Masson</a></h2>
-					</header>
-					<section class="post-excerpt">
-					<p>
-					  He is the chief physician of Xiehe Hospital.Diagnosis and management of cornary artery disease, dyslipidemia, as well as research into the clinical assessment and application heart failure and cadiovascular pharmatheuticals.
-					</p>
-					</section>
-				</div>
-				</article>
-			</div>
-			<div class="grid-item">
-				<article class="post tag-romance">
-				<img src="../static/img/doc-1(1).jpg">
-				<div class="wrapgriditem">
-					<header class="post-header">
-					<h2 class="post-title"><a href="article.html">Keanu Reeves</a></h2>
-					</header>
-					<section class="post-excerpt">
-					<p>
-					  He is the director of the Department of Internal Medicine at Xiehe Hospital.Diagnosis and therapy of fever of unknown origin, infectious diseases, and various liver diseases.
-					</p>
-					</section>
-				</div>
-				</article>
-			</div>
-			<div class="grid-item">
-				<article class="post tag-romance featured">
-				<img src="../static/img/doc-4(1).jpg">
-				<div class="wrapgriditem">
-					<header class="post-header">
-					<h2 class="post-title"><a href="article.html">Nigel Nevin</a></h2>
-					</header>
-					<section class="post-excerpt">
-					<p>
-					  He is a professor at Xiehe Hospital.Various difficult and complicated diseases of respiratory system.Difficult and complicated conditions of respirotory system
-					</p>
-					</section>
-				</div>
-				</article>
-			</div>
-			<div class="grid-item">
-				<article class="post">
-				<img src="../static/img/doc-3(1).jpg">
-				<div class="wrapgriditem">
-					<header class="post-header">
-					<h2 class="post-title">Tom Cruse</h2>
-					</header>
-					<section class="post-excerpt">
-					<p>
-					  He is the chief physician of XieheHospital.Children of short stature, pituitary dwarfism, newborn behavior testing and its application.<br>
-                    </p>
-					</section>
-				</div>
-				</article>
-			</div>
-			<div class="grid-item">
-				<article class="post tag-romance">
-				<img src="../static/img/doc-2(1).jpg">
-				</article>
-			</div>
-			<div class="grid-item">
-				<article class="post featured">
-				<img src="../static/img/doc-6(1).jpg">
-				</article>
-			</div>
-		</div>
-	</div>
-	</main>
-	<footer class="site-footer clearfix">
-	<a href="#top" id="back-to-top" class="back-top"></a>
-	</footer>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#" th:href="@{/patient}">Patient Info</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" th:href="@{/home}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#"></a>
+            <a class="nav-item nav-link" href="#"></a>
+            <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+
+        </div>
+
+    </div>
+
+    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="search" aria-label="搜索"
+                   aria-describedby="btnNavbarSearch"/>
+            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+        </div>
+    </form>
+    <!--<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+           aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>&nbsp;退出登录</a></li>
+        </ul>-->
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            background-color: #f9f9f9;
+            right: 0;
+            left: auto;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+
+
+    &ensp;&ensp;<div class="dropdown">
+    <button class="dropbtn">
+        <i class="fas fa-user"></i>
+    </button>
+    <div class="dropdown-content">
+        <div class="dropdown-content">
+            <a href="https://example.com" target="_blank">Action</a>
+            <a href="https://example.com/another" target="_blank">Another action</a>
+            <a href="https://example.com/something" target="_blank">Something else here</a>
+        </div>
+
+    </div>
 </div>
-	</body>
+
+
+
+
+
+</nav>
+
+<h1>医生信息</h1>
+
+<table>
+    <thead>
+    <tr>
+        &nbsp; <th>医生</th>
+        <th>隶属医院</th>
+        <th>隶属科室</th>
+        <th>具体地址</th>
+        <th>个人照片</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        &nbsp; <td>医生1</td>
+        <td>医院1</td>
+        <td>科室1</td>
+        <td>地址1</td>
+        <td><img src="doctor1.jpg" alt="医生1照片"></td>
+        <td><button onclick="submitAppointment()">Details</button><td>
+
+    </tr>
+    <tr>
+        &nbsp; <td>医生2</td>
+        <td>医院2</td>
+        <td>科室2</td>
+        <td>地址2</td>
+        <td><img src="doctor2.jpg" alt="医生2照片"></td>
+        <td><button onclick="submitAppointment()">Details</button><td>
+    </tr>
+    <tr>
+        &nbsp; <td>医生2</td>
+        <td>医院2</td>
+        <td>科室2</td>
+        <td>地址2</td>
+        <td><img src="doctor2.jpg" alt="医生2照片"></td>
+        <td><button onclick="submitAppointment()">Details</button><td>
+    </tr> <tr>
+        &nbsp; <td>医生2</td>
+        <td>医院2</td>
+        <td>科室2</td>
+        <td>地址2</td>
+        <td><img src="doctor2.jpg" alt="医生2照片"></td>
+        <td><button onclick="submitAppointment()">Details</button><td>
+    </tr> <tr>
+        &nbsp; <td>医生2</td>
+        <td>医院2</td>
+        <td>科室2</td>
+        <td>地址2</td>
+        <td><img src="doctor2.jpg" alt="医生2照片"></td>
+        <td><button onclick="submitAppointment()">Details</button><td>
+    </tr> <tr>
+        &nbsp; <td>医生2</td>
+        <td>医院2</td>
+        <td>科室2</td>
+        <td>地址2</td>
+        <td><img src="doctor2.jpg" alt="医生2照片"></td>
+        <td><button onclick="submitAppointment()">Details</button><td>
+    </tr> <tr>
+        &nbsp; <td>医生2</td>
+        <td>医院2</td>
+        <td>科室2</td>
+        <td>地址2</td>
+        <td><img src="doctor2.jpg" alt="医生2照片"></td>
+        <td><button onclick="submitAppointment()">Details</button><td>
+    </tr> <tr>
+        &nbsp; <td>医生2</td>
+        <td>医院2</td>
+        <td>科室2</td>
+        <td>地址2</td>
+        <td><img src="doctor2.jpg" alt="医生2照片"></td>
+        <td><button onclick="submitAppointment()">Details</button><td>
+    </tr> <tr>
+        &nbsp; <td>医生2</td>
+        <td>医院2</td>
+        <td>科室2</td>
+        <td>地址2</td>
+        <td><img src="doctor2.jpg" alt="医生2照片"></td>
+        <td><button onclick="submitAppointment()">Details</button><td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+</body>
 </html>
