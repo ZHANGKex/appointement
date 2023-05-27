@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/newcss/style.css">
+    <link rel="stylesheet" href="../static/newcss/commonStyle.css">
+    <link rel="stylesheet" href="../static/newcss/font.css">
+    <link rel="stylesheet" href="../static/iconfont/download/iconfont01/iconfont.css">
+    <link rel="stylesheet" href="../static/newcss/mobile.css">
+    <title>Xiehe Hospital</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <ul class="header_list flexBox">
+                <li class="logo"><img src="../static/img/logo1.png" alt=""></li>
+            </ul>
+            <h2>Xiehe Hospital</h2>
+			<br>
+            <div class="enter">
+                <a href="#enter"><i class="../static/iconfont icon-jiantouxia"></i></a>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="sec_nav container">
+            <ul id="enter" class="flexBox flexCenter">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/doctor">Doctor</a></li>
+                <li><a href="/announcement">Announcement</a></li>
+                <li><a href="/science">Science</a></li>
+				<li><a href="/register">Registration</a></li>
+            </ul>
+        </div>
+        <div class="sec_bgback">
+            <div class="container sec_flex flexBox">
+                <div class="sec_leftWrite">
+                    <div class="sec_headline">
+                        <h2>Click here for</h2>
+                        <h2>registration</h2>
+                    </div>
+                    <div sec:authorize = "isAuthenticated()"><button><a href="/" th:href="@{/logout}">Logout</a></button></div>
+
+                    <h2><br></h2>
+                    <button><a href="Registration.html" th:href="@{/register}">Register</a></button>
+
+                </div>
+<!--                <div class="sec_leftWrite" >
+                    <div class="sec_headline">
+                        <h2>Click here for</h2>
+                        <h2>logout</h2>
+                    </div>
+                    <button ><a  ><p class="nav-item">Logout</p></a></button>
+                </div>-->
+                <div class="sec_rightPic">
+                    <div class="pic_center">
+                        <img src="../static/img/about-img.svg" alt="">
+                        <p>The hospital was built in 1921, with a total of 4 campuses, a total construction area of more than 610,000 square meters, more than 4,000 employees, 3 academicians of the two academies, and 57 clinical, medical technology and platform departments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sec_picture flexBox">
+            <div>
+                <img src="../static/img/doc-3.jpg" alt="">
+            </div>
+            <div>
+                <img src="../static/img/doc-1.jpg" alt="">
+            </div>
+            <div>
+                <img src="../static/img/doc-5.jpg" alt="">
+            </div>
+            <div>
+                <img src="../static/img/doc-2.jpg" alt="">
+            </div>
+            <div>
+                <img src="../static/img/doc-5.jpg" alt="">
+            </div>
+        </div>
+    <footer>
+        <div class="footbody container">
+            <ul class="flexBox flexCenter">
+                <li>About us</li>
+                <li class="bigWrite"><a href="/home">Xiehe Hospital</a></li>
+                <li>Sggestions</li>    
+            </ul>
+            <p>Contact us</p>
+            <p>XXX-XXXX-XXXX</p>
+        </div>
+    </footer>
+        <</section>
+</body>
+
+</html>

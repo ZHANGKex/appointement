@@ -1,4 +1,4 @@
-package com.isep.appointement.model;
+/*package com.isep.appointement.model;
 
 import com.isep.appointement.Repository.PatientRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -40,4 +40,4 @@ public class PatientConfig {
             repository.saveAll(List.of(p1, p2, p3));
         };
     }
-}
+}*/

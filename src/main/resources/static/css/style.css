@@ -19,7 +19,7 @@ body {
 
 .styled-select {
     width: 100%;
-    height: 100%;
+    height: auto;
     padding: 5px 10px;
     border: 1px gray solid;
     border-radius: 10px;
@@ -32,6 +32,15 @@ body {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+}
+
+.styled-select option{
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1);
 }
 
 .select-container::after {
@@ -66,10 +75,11 @@ button {
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    display: block;
+    margin: 0 auto;
 }
 
 @keyframes fadeIn {
@@ -83,5 +93,17 @@ button {
 
 .fade-in {
     animation: fadeIn 0.5s ease-in;
+    margin: 10px;
+    height: auto;
+    background: #fff;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 12px;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+
 }
 
