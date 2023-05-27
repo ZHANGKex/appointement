@@ -1,0 +1,106 @@
+/* Add any custom styles for the "About Us" page here */
+
+/* Example styles */
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+main {
+	padding: 40px;
+}
+
+section {
+	margin-bottom: 40px;
+}
+
+h2 {
+	font-size: 24px;
+	color: #333;
+}
+
+p {
+	font-size: 16px;
+	color: #555;
+}
+
+/* Custom styles to match the style of the provided code */
+header {
+	background-color:rgb(252, 88,33);
+	padding: 20px;
+	display: flex;
+	justify-content: center; /* Center the content horizontally */
+	align-items: center; /* Center the content vertically */
+}
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header_list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+    color: rgb(252, 88,33);
+}
+
+.logo img {
+	width: 100px;
+}
+
+h2 {
+	font-size: 24px;
+	color: #333;
+	margin: 0;
+	padding: 0;
+}
+
+.enter {
+	margin-left: auto;
+}
+
+.enter a {
+	color: #333;
+	text-decoration: none;
+}
+
+.enter i {
+	font-size: 24px;
+}
+
+main {
+	background-color: #fff;
+	padding: 40px;
+}
+
+footer {
+	background-color:rgb(252, 88,33);
+	color: #fff;
+	padding: 20px;
+}
+
+.footbody ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+.bigWrite a {
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.flexBox {
+	display: flex;
+}
+
+.flexCenter {
+	justify-content: center;
+	align-items: center;
+}
