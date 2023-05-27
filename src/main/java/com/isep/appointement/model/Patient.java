@@ -1,29 +1,44 @@
 package com.isep.appointement.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
 
 @Entity
-@Table(name = "patient")
-public class Patient {
+@Table
+public class Patient implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "username", nullable = false, length = 50)
-    private String username;
-
-    @Column(name = "password", nullable = false, length = 50)
+    @Column(name = "password", nullable = false)
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false, length = 20)
+    private Roles role = Roles.Patient;
 
     @Column(name = "name", nullable = false, length = 50)
     private String name;
+
+    @Column(name = "birthday", nullable = false)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate birthday;
 
     @Column(name = "age", nullable = false)
     private int age;
 
     @Column(name = "sex", nullable = false)
-    private int sex; // 0:female, 1:male, 2: other ...
+    private String sex;
 
     @Column(name = "address", length = 255)
     private String address;
@@ -52,14 +67,14 @@ public class Patient {
     @Lob
     private String geneticDiseases;
 
+    private Boolean locked = true;
+    private Boolean enabled = false;
+
     public Patient() {
     }
 
-//All attributes
-
-    public Patient(Long id, String username, String password, String name, int age, int sex, String address, String caseImg, int telephone, String mail, String idNumber, String job, String allergens, String chronicDiseases, String geneticDiseases) {
+    public Patient(Long id, String password, String name, int age, String sex, String address, String caseImg, int telephone, String mail, String idNumber, String job, String allergens, String chronicDiseases, String geneticDiseases) {
         this.id = id;
-        this.username = username;
         this.password = password;
         this.name = name;
         this.age = age;
@@ -75,10 +90,10 @@ public class Patient {
         this.geneticDiseases = geneticDiseases;
     }
 
+
     //Attributes necessary
-    public Patient(Long id, String username, String password, String name, int age, int sex, int telephone, String mail, String idNumber) {
+    public Patient(Long id, String password, String name, int age, String sex, int telephone, String mail, String idNumber) {
         this.id = id;
-        this.username = username;
         this.password = password;
         this.name = name;
         this.age = age;
@@ -86,9 +101,10 @@ public class Patient {
         this.telephone = telephone;
         this.mail = mail;
         this.idNumber = idNumber;
+        this.enabled = false;
+        this.locked = true;
     }
 
-// getters and setters
 
     public Long getId() {
         return id;
@@ -96,6 +112,61 @@ public class Patient {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+/*    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }*/
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
+        return Collections.singletonList(authority);
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return mail;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return locked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Roles getRoles() {
+        return role;
+    }
+
+    public void setRoles(Roles roles) {
+        this.role = roles;
     }
 
     public String getName() {
@@ -106,36 +177,55 @@ public class Patient {
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    public LocalDate getBirthday() {
+        return birthday;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
     }
 
     public int getAge() {
-        return age;
+        if(birthday == null){
+            birthday = LocalDate.now();
+        }
+        return Period.between(birthday, LocalDate.now()).getYears();
     }
 
     public void setAge(int age) {
         this.age = age;
     }
 
-    public int getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public Roles getRole() {
+        return role;
+    }
+
+    public void setRole(Roles role) {
+        this.role = role;
+    }
+
+    public Boolean getLocked() {
+        return locked;
+    }
+
+    public void setLocked(Boolean locked) {
+        this.locked = locked;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getAddress() {
@@ -212,9 +302,8 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient{" +
+        return "Student{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+        crossorigin="anonymous"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Appointment Management</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#" th:href="@{/appoitment}">Appointment Management</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" th:href="@{/home}">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#"></a>
+      <a class="nav-item nav-link" href="#"></a>
+      <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+
+    </div>
+
+  </div>
+  <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+    <div class="input-group">
+      <input class="form-control" type="text" placeholder="search" aria-label="搜索"
+             aria-describedby="btnNavbarSearch"/>
+      <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+    </div>
+  </form>
+  <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+         aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>&nbsp;退出登录</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<div class="container">
+  <div class="row">
+    <h1> List of reservations</h1>
+
+  </div>
+  <div class="row">
+    <div class="co-lg-3">
+      <a th:href ="@{/patient/appoitment/new}" class="btn btn-primary btn-sm mb-3" >Add appointment</a>
+
+    </div>
+
+  </div>
+
+  <table class="table">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Doctor name</th>
+      <th scope="col">Patient name</th>
+      <th scope="col">TimeLine</th>
+      <th scope="col">location</th>
+      <th scope="col">status</th>
+<!--      <th scope="col">Sex</th>
+      <th scope="col">Sex</th>
+      <th scope="col">Role</th>-->
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="reservation: ${reservations}">
+      <td th:text="${reservation.id}"></td>
+      <td th:text="${reservation.doctor.name}"></td>
+      <td th:text="${reservation.patient.name}"></td>
+      <td th:text="${reservation.getTimeLine()}"></td>
+      <td th:text="${reservation.location}"></td>
+      <td th:text="${reservation.status}"></td>
+<!--      <td th:text="${patient.getAge()}"></td>
+      <td th:text="${patient.getSex()}"></td>
+      <td th:text="${patient.getRole()}"></td>-->
+      <td>
+        <a th:href="@{/appointment/edit/{id}(id=${reservation.id})}" class="btn btn-primary">Update</a><br><br>
+        <a th:href="@{/appointment/{id}(id=${reservation.id})}" class="btn btn-secondary">Remove</a>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

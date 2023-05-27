@@ -1,0 +1,24 @@
+/* 中文字体引用 */
+@font-face{
+    font-family:'MuLan';
+    src:url('../font/MuLan/MuLan.eot');
+    src:url('../font/MuLan/MuLan.eot') format('embedded-opentype'),
+    url('..font/MuLan/MuLan.woff2') format('woff2'),
+    url('../font/MuLan/MuLan.woff') format('woff'),
+    url('../font/MuLan/MuLan.ttf') format('truetype'),
+    url('../font/MuLan/MuLan.svg') format('svg');
+    font-weight:normal;   
+    font-style:normal;    
+}
+/* 英文字体引用 */
+@font-face{
+    font-family:'XiYuan';
+    src:url('../font/XiYuan/XiYuan.eot');
+    src:url('../font/XiYuan/XiYuan.eot') format('embedded-opentype'),
+    url('../font/XiYuan/XiYuan.woff2') format('woff2'),
+    url('../font/XiYuan/XiYuan.woff') format('woff'),
+    url('../font/XiYuan/XiYuan.ttf') format('truetype'),
+    url('../font/XiYuan/XiYuan.svg') format('svg');
+    font-weight:normal;   
+    font-style:normal;    
+}

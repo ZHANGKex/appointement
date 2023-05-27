@@ -1,18 +1,23 @@
 package com.isep.appointement.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Collection;
+import java.util.Collections;
 
 @Entity
-@Table(name = "doctors")
-public class Doctor {
-
+@Table
+public class Doctor implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int idDoc;
-
-    @Column(name = "username", nullable = false, length = 50)
-    private String username;
 
     @Column(name = "password", nullable = false, length = 50)
     private String password;
@@ -20,17 +25,25 @@ public class Doctor {
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
+    @Column(name = "birthday")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate birthday;
+
     @Column(name = "age")
     private int age;
 
     @Column(name = "sex", nullable = false)
-    private int sex; // 0:female, 1:male, 2: other ...
+    private String sex;
 
     @Column(name = "phone", nullable = false, length = 20)
     private int telephone;
 
     @Column(name = "email", length = 50)
     private String mail;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false, length = 20)
+    private Roles role = Roles.Doctor;
 
     @Column(name = "education_background", nullable = false, length = 50)
     private String educationBackground;
@@ -40,10 +53,6 @@ public class Doctor {
 
     @Column(name = "title", length = 255)
     private String title;
-
-    /*@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "departement_id")
-    private Departement departement;*/
 
     @Column(name = "resume", length = 255)
     private String resume;
@@ -55,28 +64,10 @@ public class Doctor {
     private String availableTimings;
 
     public Doctor() {
-
     }
 
-    public Doctor(String name, int age, String educationBackground, String specialty, String title,
-                  /*Departement departement, */String resume, String receptionRequirements, String availableTimings) {
-        super();
-        this.name = name;
-        this.age = age;
-        this.educationBackground = educationBackground;
-        this.specialty = specialty;
-        this.title = title;
-        /*this.departement = departement;*/
-        this.resume = resume;
-        this.receptionRequirements = receptionRequirements;
-        this.availableTimings = availableTimings;
-    }
-
-//All attributes
-
-    public Doctor(int idDoc, String username, String password, String name, int age, int sex, int telephone, String mail, String educationBackground, String specialty, String title, String resume, String receptionRequirements, String availableTimings) {
+    public Doctor(int idDoc, String password, String name, int age, String sex, int telephone, String mail, String educationBackground, String specialty, String title, String resume, String receptionRequirements, String availableTimings) {
         this.idDoc = idDoc;
-        this.username = username;
         this.password = password;
         this.name = name;
         this.age = age;
@@ -93,16 +84,15 @@ public class Doctor {
 
     //Attributes necessary
 
-    public Doctor(int idDoc, String username, String password, String name, int telephone, String educationBackground, String specialty) {
+    public Doctor(int idDoc, String password, String name, LocalDate birthday, int telephone, String educationBackground, String specialty) {
         this.idDoc = idDoc;
-        this.username = username;
         this.password = password;
         this.name = name;
+        this.birthday = birthday;
         this.telephone = telephone;
         this.educationBackground = educationBackground;
         this.specialty = specialty;
     }
-
     public int getIdDoc() {
         return idDoc;
     }
@@ -111,28 +101,86 @@ public class Doctor {
         this.idDoc = idDoc;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
+        return Collections.singletonList(authority);
     }
 
     public String getPassword() {
         return password;
     }
 
+    @Override
+    public String getUsername() {
+        return mail;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public int getSex() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
+    }
+
+    public int getAge() {
+        if(birthday == null){
+            birthday = LocalDate.now();
+        }
+        return Period.between(birthday, LocalDate.now()).getYears();
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public Roles getRole() {
+        return role;
+    }
+
+    public void setRole(Roles role) {
+        this.role = role;
     }
 
     public int getTelephone() {
@@ -149,22 +197,6 @@ public class Doctor {
 
     public void setMail(String mail) {
         this.mail = mail;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getEducationBackground() {
@@ -191,14 +223,6 @@ public class Doctor {
         this.title = title;
     }
 
-    /*public Departement getDepartement() {
-        return departement;
-    }*/
-
-    /*public void setDepartement(Departement departement) {
-        this.departement = departement;
-    }*/
-
     public String getResume() {
         return resume;
     }
@@ -221,25 +245,5 @@ public class Doctor {
 
     public void setAvailableTimings(String availableTimings) {
         this.availableTimings = availableTimings;
-    }
-
-    @Override
-    public String toString() {
-        return "Doctor{" +
-                "idDoc=" + idDoc +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", sex=" + sex +
-                ", telephone=" + telephone +
-                ", mail='" + mail + '\'' +
-                ", educationBackground='" + educationBackground + '\'' +
-                ", specialty='" + specialty + '\'' +
-                ", title='" + title + '\'' +
-                ", resume='" + resume + '\'' +
-                ", receptionRequirements='" + receptionRequirements + '\'' +
-                ", availableTimings='" + availableTimings + '\'' +
-                '}';
     }
 }

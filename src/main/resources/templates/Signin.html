@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Xiehe Hospital</title>
+        <link rel="stylesheet" type="text/css" href="../static/newcss/styles.css">
+		<link rel="stylesheet" type="text/css" href="../static/assets/css/sce.css"/>
+        <script src="../static/newjs/load-header.js"></script>
+    <style>
+		.tem{background-image: url("../static/img/banner1.jpg");background-size: 100%;}
+		.ten{height:70px;}
+	</style>
+    </head>
+<body class="tem">
+	<nav class="main-nav overlay clearfix ten">
+	<ul id="menu">
+        <li class="nav-home nav-current" role="presentation"><a href="/home">Home</a></li>
+        <li class="nav-about-us" role="presentation"><a href="/doctor">Doctor</a></li>
+        <li class="nav-author-page" role="presentation"><a href="/announcement">Announcement</a></li>
+        <li class="nav-author-page" role="presentation"><a href="/science">Science</a></li>
+        <li class="nav-article-example" role="presentation"><a href="/register">Registration</a></li>
+		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+	</ul>
+	</nav>
+    <div id="header-placeholder"></div>
+    <div class="background"></div>
+    <div class="main-container">
+        <div class="signup-container">
+            <div class="card-header"><h3 class="text-center font-weight-light my-4">病人登录</h3></div>
+            <form th:action="@{/login}" method="post">
+                <!--error message-->
+                <div th:if = "${param.error}" >
+                    <div class="alert alert-danger" th:text="${Exception}">Invalid </div>
+                </div>
+
+                <!--logout message-->
+                <div th:if = "${param.logout}">
+                    <div class="alert alert-info">You've been logged out </div>
+                </div>
+
+                <label for="email">Email:</label>
+                <input type="email" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Login</button>
+
+            </form>
+            <div class="form-group">
+                <span>
+                    Not sign up?
+                    <a href="/" th:href="@{/register}"> Sign up</a>
+
+                </span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
