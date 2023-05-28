@@ -67,6 +67,12 @@ public class Doctor implements UserDetails {
     @JoinColumn(name = "department_id", nullable = false)
     private Department department;
 
+    @Lob
+    private String geneticDiseases;
+
+    private Boolean locked = true;
+    private Boolean enabled;
+
 
     public Doctor() {
 
@@ -195,6 +201,10 @@ public class Doctor implements UserDetails {
 
     public void setTelephone(int telephone) {
         this.telephone = telephone;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
     }
 
     public String getMail() {

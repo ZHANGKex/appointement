@@ -1,12 +1,12 @@
 package com.isep.appointement.controller.Appointment;
 
 
-import com.isep.appointment.model.Appointment;
+/*import com.isep.appointment.model.Appointment;
 import com.isep.appointment.repository.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+/*@Service
 public class AppointmentService {
     private final AppointmentRepository appointmentRepository;
 
@@ -21,3 +21,4 @@ public class AppointmentService {
 
     // other methods ...
 }
+*/
