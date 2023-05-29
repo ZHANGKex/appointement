@@ -15,6 +15,22 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../static/css/yuyue.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ge ren jian li </title>
+    <!--文字居中-->
+    <style>
+        body{text-align:center}
+    </style>
+    <!--消除表单内方框-->
+    <style>
+        input{
+            border:0px;
+            width:90%;
+        }
+    </style>
+
+
 
 </head>
 <body>
@@ -76,10 +92,6 @@
         .dropdown:hover .dropdown-content {
             display: block;
         }
-        img {
-            max-width: 200px;
-            max-height: 200px;
-        }
     </style>
 
 
@@ -102,70 +114,115 @@
 
 
 </nav>
-<div class="form-data">
-    <div class="container-fluid px-4">
-        <h2>reservation/doctor's information</h2>
+<!DOCTYPE html>
 
 
-        <ol class="breadcrumb mb-4">
-
-            <li class="breadcrumb-item"><a href="/" th:href="@{/home}">home</a></li>
-            <li class="breadcrumb-item active">Doctor's Information</li>
-        </ol>
-
-
-        <div class="form-image">
-            <img src="../static/img/doc-2.jpg" alt="照片" width="240" height="210">
-        </div>
-
-        <center>
-    <table>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-        <tr>
-            <td>Name</td>
-            <td>Specialty</td>
-        </tr>
-        <tr>
-            <td>sex</td>
-            <td>Educational Background</td>
-        </tr>
-        <tr>
-            <td>Department</td>
-            <td>Title</td>
-        </tr>
-
-        <tr>
-            <td>Tel:</td>
-            <td>Hospital</td>
-        </tr>
-
-        <!-- 添加更多表单字段和值的行 -->
-    </table>
-            </center>
-    <br>
-</div>
-    <!--h1>Welcome to the Appointment Booking System</h1-->
-
-<div class="container">
-
-
-
-
-
-    <h2>Please select an appointment time:</h2>
-    <div class="datepicker-container">
-        <input type="datetime-local" id="timeInput" placeholder="选择预约时间">
-    </div>
-    <br>
-
-</div>
-<br>
-<center>
-<button onclick="submitAppointment()">confirm appointment</button>
-</center>>
-<script src="js/script.js"></script>
+<tr>
+    <th><b> 个人简历</b></th>
+</tr>
+<table border="1">
+    <tr>
+        <form>
+            <td width="160"height="30">姓名</td>
+            <td ><input type="text"name="姓名"></td>
+            <td width="160"height="30">性别</td>
+            <td ><input type="text"name="性别"></td>
+            <td width="160"height="30">出生年月</td>
+            <td><input type="text"name="出生年月"></td>
+            <td rowspan="4"width="120"height="30"><input type="file"></td>
+        </form>
+    </tr>
+    <tr>
+        <form>
+            <td width="160"height="30">民族</td>
+            <td ><input type="text"name="民族"></td>
+            <td width="160"height="30">政治面貌</td>
+            <td ><input type="text"name="政治面貌"></td>
+            <td width="160"height="30">身高</td>
+            <td><input type="text"name="身高"></td>
+        </form>
+    </tr>
+    <tr>
+        <form>
+            <td width="160"height="30">学制</td>
+            <td ><input type="text"name="学制"></td>
+            <td width="160"height="30">学历</td>
+            <td ><input type="text"name="学历"></td>
+            <td width="160"height="30">户籍</td>
+            <td><input type="text"name="户籍"></td>
+        </form>
+    </tr>
+    <tr>
+        <form>
+            <td width="160"height="30">专业</td>
+            <td ><input type="text"name="专业"></td>
+            <td colspan="2">毕业学校</td>
+            <td colspan="2"><input type="text"name="毕业学校"></td>
+        </form>
+    </tr>
+    <tr>
+        <td colspan="8">技能、特长或爱好</td>
+    </tr>
+    <tr>
+        <form>
+            <td width="160"height="30">外语等级</td>
+            <td colspan="2"><input type="text"name="外语等级"></td>
+            <td width="160"height="30">计算机</td>
+            <td colspan="4"><input type="text"name="计算机"></td>
+        </form>
+    </tr>
+    <tr>
+        <td colspan="8">个人履历</td>
+    </tr>
+    <tr>
+        <form>
+            <td width="160"height="30">时间</td>
+            <td colspan="2">单位</td>
+            <td colspan="6">经历</td>
+        </form>
+    </tr>
+    <tr>
+        <form>
+            <td><input type="text"name="时间"></td>
+            <td colspan="2"><input type="text"name="单位"></td>
+            <td colspan="6"><input type="text"name="经历"></td>
+        </form>
+    </tr>
+    <tr>
+        <form>
+            <td><input type="text"name="时间"></td>
+            <td colspan="2"><input type="text"name="单位"></td>
+            <td colspan="6"><input type="text"name="经历"></td>
+        </form>
+    </tr>
+    <tr>
+        <form>
+            <td><input type="text"name="时间"></td>
+            <td colspan="2"><input type="text"name="单位"></td>
+            <td colspan="6"><input type="text"name="经历"></td>
+        </form>
+    </tr>
+    <tr>
+        <td colspan="8">联系方式</td>
+    </tr>
+    <tr>
+        <form>
+            <td width="160"height="30">Email</td>
+            <td colspan="2"><input type="email"name="Email"></td>
+            <td width="160"height="30">联系电话</td>
+            <td colspan="4"><input type="number"name="联系电话"></td>
+        </form>
+    </tr>
+    <tr>
+        <form>
+            <td width="160"height="30">通信地址</td>
+            <td colspan="2"><input type="text"name="通信地址"></td>
+            <td width="160"height="30">邮编</td>
+            <td colspan="4"><input type="text"name="邮编"></td>
+        </form>
+    </tr>
+    <tr>
+        <td colspan="8">自我评价</td>
+    </tr>
 </body>
 </html>

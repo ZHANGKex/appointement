@@ -65,7 +65,123 @@ th, td {
 }
 
 img {
-    max-width: 358px;
-    max-height: 441px;
+    max-width: 210px;
+    max-height: 180px;
+}
+
+.doctor-profile {
+    display: flex;
+    align-items: center;
+}
+
+.doctor-profile img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.left-section {
+    flex: 0 0 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-section {
+    flex: 1;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.appointment-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.appointment-button:hover {
+    background-color: #0056b3;
+}
+.form-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.form-data h2 {
+    margin-bottom: 20px;
+}
+
+.form-data table {
+    border-collapse: collapse;
+    width: 60%;
+}
+
+.form-data th, .form-data td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.form-data th {
+    background-color: #f2f2f2;
+}
+
+.form-image {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.form-image img {
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.appointment-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.appointment-button:hover {
+    background-color: #0056b3;
+}
+img2html {
+    max-width: 210px;
+    max-height: 140px;
 }
 
