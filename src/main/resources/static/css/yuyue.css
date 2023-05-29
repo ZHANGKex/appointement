@@ -185,3 +185,23 @@ img2html {
     max-height: 140px;
 }
 
+.form-table {
+    margin: 0 auto; /* 将表格居中 */
+    width: 80%; /* 设置表格宽度 */
+    border-collapse: collapse; /* 合并单元格边框 */
+}
+
+.form-table th, .form-table td {
+    padding: 10px; /* 设置单元格内边距 */
+    text-align: center; /* 居中对齐内容 */
+    border: 1px solid #ddd; /* 单元格边框样式 */
+}
+
+.form-table th {
+    background-color: #f2f2f2; /* 设置表头背景颜色 */
+}
+
+.form-table img {
+    max-width: 100px; /* 设置图片最大宽度 */
+    max-height: 100px; /* 设置图片最大高度 */
+}
