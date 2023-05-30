@@ -27,7 +27,7 @@ p {
 
 /* Custom styles to match the style of the provided code */
 header {
-	background-color:rgb(252, 88,33);
+	background-color: rgb(252, 88, 33);
 	padding: 20px;
 	display: flex;
 	justify-content: center; /* Center the content horizontally */
@@ -45,7 +45,7 @@ header {
 	margin: 0;
 	padding: 0;
 	display: flex;
-    color: rgb(252, 88,33);
+	color: rgb(252, 88, 33);
 }
 
 .logo img {
@@ -75,10 +75,81 @@ h2 {
 main {
 	background-color: #fff;
 	padding: 40px;
+	position: relative; /* Add position relative to the main container */
+}
+
+.grid {
+	position: relative; /* Add position relative to the grid container */
+}
+
+.grid-item {
+	position: absolute; /* Use absolute positioning for the grid items */
+}
+
+.grid-item:nth-child(1) {
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.grid-item:nth-child(2) {
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+}
+
+.grid-item:nth-child(3) {
+	top: 50%;
+	left: 100%;
+	transform: translateY(-50%);
+}
+
+.grid-item:nth-child(4) {
+	top: 100%;
+	left: 25%;
+	transform: translateX(-50%);
+}
+
+.grid-item:nth-child(5) {
+	top: 100%;
+	left: 75%;
+	transform: translateX(-50%);
+}
+
+.grid-item:nth-child(6) {
+	top: 50%;
+	left: 25%;
+	transform: translateY(-50%);
+}
+
+.grid-item:nth-child(7) {
+	top: 50%;
+	left: 75%;
+	transform: translateY(-50%);
+}
+
+article.post {
+	position: relative; /* Add position relative to the grid item */
+}
+
+.wrapgriditem {
+	padding: 20px;
+	background-color: #fff;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	text-align: center;
+}
+
+article.post img {
+	margin-bottom: 20px;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	object-fit: cover;
 }
 
 footer {
-	background-color:rgb(252, 88,33);
+	background-color: rgb(252, 88, 33);
 	color: #fff;
 	padding: 20px;
 }
