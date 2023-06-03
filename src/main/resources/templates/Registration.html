@@ -17,11 +17,14 @@
 <body class="tem">
 	<nav class="main-nav overlay clearfix ten">
 	<ul id="menu">
-        <li class="nav-home nav-current" role="presentation"><a href="/home">Home</a></li>
-        <li class="nav-about-us" role="presentation"><a href="/doctor">Doctor</a></li>
-        <li class="nav-author-page" role="presentation"><a href="/announcement">Announcement</a></li>
-        <li class="nav-author-page" role="presentation"><a href="/science">Science</a></li>
-        <li class="nav-article-example" role="presentation"><a href="/register">Registration</a></li>
+        <li><a href="/home">Home</a></li>
+        <li><a th:href="@{/personal}" sec:authorize="isAuthenticated()">Personal Page</a>
+            <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Personal Page</a></li>
+        <li><a href="/announcement">Announcement</a></li>
+        <li><a href="/science">Science</a></li>
+        <li><a href="/appointment/patient/search"th:href="@{/reservation}" sec:authorize="isAuthenticated()">Reservation</a>
+            <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Reservation</a>
+        </li>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 	</ul>
 	</nav>

@@ -2,74 +2,143 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+        crossorigin="anonymous"></script>
 <head>
   <meta charset="UTF-8">
   <title>Appointment Management(Doctor)</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#" th:href="@{//doctor/appointment}">Appointment Management(Doctor)</a>
+  <a class="navbar-brand" href="#" th:href="@{/appointment/doctor}">Appointment Management(Doctor)</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" th:href="@{/home}">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#"></a>
-      <a class="nav-item nav-link" href="#"></a>
+      <a class="nav-item nav-link" href="#" th:href="@{/home}">Home <span class="sr-only"></span></a>
+      <a class="nav-item nav-link " href="#" th:href="@{/info/doctor}">Info <span class="sr-only"></span></a>
+      <a class="nav-item nav-link active" href="#" th:href="@{/appointment/doctor}">Appointment <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
     </div>
   </div>
-</nav>
-<div class="container">
-  <div class="row">
-    <h1> List of patients</h1>
+  <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" action="#" th:action="@{/appointment/doctor}" method="get">>
+    <input type="text" id="keywordDoc" name="keywordDoc" class="form-control" placeholder="Enter keyword" aria-label="搜索"
+           aria-describedby="btnNavbarSearch"/>
+    <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
+  </form>
+  <style>
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
 
-  </div>
-  <div class="row">
-    <div class="co-lg-3">
-      <a th:href ="@{/doctor/appointment}" class="btn btn-primary btn-sm mb-3" >Add Patient</a>
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      background-color: #f9f9f9;
+      right: 0;
+      left: auto;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
+
+
+  &ensp;&ensp;<div class="dropdown">
+  <button class="dropbtn">
+    <i class="fas fa-user"></i>
+  </button>
+  <div class="dropdown-content">
+    <div class="dropdown-content">
+      <a href="/" th:href="@{/logout}" target="_blank">Logout</a>
 
     </div>
+
+  </div>
+</div>
+</nav>
+<div class="container">
+  <h1 class="mt-4">Appointment</h1>
+
+  <ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="/" th:href="@{/info/doctor}">Personal Info</a></li>
+    <li class="breadcrumb-item active">Appointment</li>
+  </ol>
+  <div class="row">
+  </div>
+  <div class="row">
+<!--    <div class="co-lg-3">
+      <a th:href ="@{/appointment/doctor}" class="btn btn-primary btn-sm mb-3" >Add Appointment</a>
+
+    </div>-->
 
   </div>
 
   <table class="table">
     <thead class="thead-light">
     <tr>
-      <th scope="col">Name</th>
+      <th scope="col">Id</th>
+      <th scope="col">Patient Name</th>
       <th scope="col">Age</th>
-      <th scope="col">Phone numbe</th>
+      <th scope="col">Email</th>
       <th scope="col">Sex</th>
-      <th scope="col">idNumber</th>
+      <th scope="col">Time</th>
       <th scope="col">Job</th>
       <th scope="col">Case</th>
-      <th scope="col">allergens</th>
-      <th scope="col">geneticDiseases</th>
+      <th scope="col">Allergens</th>
+      <th scope="col">ChronicDiseases</th>
+      <th scope="col">GeneticDiseases</th>
+      <th scope="col">Appointment Status</th>
       <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
 
-    <tr th:each="patient: ${patients}">
-      <td th:text="${patient.id}"></td>
-      <td th:text="${patient.password}"></td>
-      <td th:text="${patient.name}"></td>
-      <td th:text="${patient.mail}"></td>
-      <td th:text="${patient.telephone}"></td>
-      <td th:text="${patient.idNumber}"></td>
-      <td th:text="${patient.getAge()}"></td>
-      <td th:text="${patient.getSex()}"></td>
-      <td th:text="${patient.getRole()}"></td>
+    <tr th:each="reservation: ${reservations}">
+      <td th:text="${reservation.getId()}"></td>
+      <td th:text="${reservation.getPatientName()}"></td>
+      <td th:text="${reservation.patient.getAge()}"></td>
+      <td th:text="${reservation.patient.mail}"></td>
+      <td th:text="${reservation.patient.sex}"></td>
+      <td th:text="${reservation.getAppointmentTime()}"></td>
+      <td th:text="${reservation.patient.job}"></td>
+      <td th:text="${reservation.patient.getCaseImg()}"></td>
+      <td th:text="${reservation.patient.getAllergens()}"></td>
+      <td th:text="${reservation.patient.getChronicDiseases()}"></td>
+      <td th:text="${reservation.patient.getGeneticDiseases()}"></td>
+      <td th:text="${reservation.getStatus()}"></td>
       <td>
-        <a th:href="@{/patient/edit/{id}(id=${patient.id})}" class="btn btn-primary">Accept</a><br><br>
-        <a th:href="@{/patient/{id}(id=${patient.id})}" class="btn btn-secondary">Refuse</a>
+        <a th:href="@{/appointment/doctor/accept/{id}(id=${reservation.id})}" class="btn btn-success">Accept</a><br><br>
+        <a th:href="@{/appointment/doctor/{id}(id=${reservation.id})}" class="btn btn-danger">Refuse</a>
       </td>
     </tr>
 
     </tbody>
   </table>
+  <!-- Pagination links -->
+  <div class="pagination">
+    <ul>
+      <li th:if="${reservations.hasPrevious()}">
+        <a th:href="@{/appointment/doctor(page=${reservations.previousPageable().pageNumber})}">&laquo; Previous</a>
+      </li>
+      <li th:if="${reservations.hasNext()}">
+        <a th:href="@{/appointment/doctor(page=${reservations.nextPageable().pageNumber})}">Next &raquo;</a>
+      </li>
+    </ul>
+  </div>
 </div>
 </body>
 </html>

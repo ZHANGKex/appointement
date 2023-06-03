@@ -1,5 +1,9 @@
 package com.isep.appointement.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -10,16 +14,21 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 @Entity
 @Table
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
 public class Doctor implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int idDoc;
+    private Long idDoc;
 
-    @Column(name = "password", nullable = false, length = 50)
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "name", nullable = false, length = 50)
@@ -40,6 +49,21 @@ public class Doctor implements UserDetails {
 
     @Column(name = "email", length = 50)
     private String mail;
+
+    private String hospitalName;
+    @Column(name = "deptName", nullable = false)
+    private String deptName;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "hospital_id", nullable = false)
+    private Hospital hospital;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "department_id", nullable = false)
+    private Department department;
+
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Reservation> reservations;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false, length = 20)
@@ -66,25 +90,8 @@ public class Doctor implements UserDetails {
     public Doctor() {
     }
 
-    public Doctor(int idDoc, String password, String name, int age, String sex, int telephone, String mail, String educationBackground, String specialty, String title, String resume, String receptionRequirements, String availableTimings) {
-        this.idDoc = idDoc;
-        this.password = password;
-        this.name = name;
-        this.age = age;
-        this.sex = sex;
-        this.telephone = telephone;
-        this.mail = mail;
-        this.educationBackground = educationBackground;
-        this.specialty = specialty;
-        this.title = title;
-        this.resume = resume;
-        this.receptionRequirements = receptionRequirements;
-        this.availableTimings = availableTimings;
-    }
-
     //Attributes necessary
-
-    public Doctor(int idDoc, String password, String name, LocalDate birthday, int telephone, String educationBackground, String specialty) {
+    public Doctor(Long idDoc, String password, String name, LocalDate birthday, int telephone, String educationBackground, String specialty, String deptName) {
         this.idDoc = idDoc;
         this.password = password;
         this.name = name;
@@ -92,18 +99,19 @@ public class Doctor implements UserDetails {
         this.telephone = telephone;
         this.educationBackground = educationBackground;
         this.specialty = specialty;
+        this.deptName = deptName;
     }
-    public int getIdDoc() {
+    public Long getIdDoc() {
         return idDoc;
     }
 
-    public void setIdDoc(int idDoc) {
+    public void setIdDoc(Long idDoc) {
         this.idDoc = idDoc;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(Roles.Doctor.name());
         return Collections.singletonList(authority);
     }
 
@@ -197,6 +205,22 @@ public class Doctor implements UserDetails {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public String getEducationBackground() {

@@ -12,7 +12,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#" th:href="@{/appoitment}">Appointment Management</a>
+  <a class="navbar-brand" href="#" th:href="@{/appointment}">Appointment Management</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,12 +26,10 @@
     </div>
 
   </div>
-  <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-    <div class="input-group">
-      <input class="form-control" type="text" placeholder="search" aria-label="搜索"
-             aria-describedby="btnNavbarSearch"/>
-      <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-    </div>
+  <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" action="#" th:action="@{/appointment}" method="get">>
+    <input type="text" id="keywordApp" name="keywordApp" class="form-control" placeholder="Enter keyword" aria-label="搜索"
+           aria-describedby="btnNavbarSearch"/>
+    <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
   </form>
   <style>
     .dropdown {
@@ -69,15 +67,12 @@
   </button>
   <div class="dropdown-content">
     <div class="dropdown-content">
-      <a href="https://example.com" target="_blank">Action</a>
-      <a href="https://example.com/another" target="_blank">Another action</a>
-      <a href="https://example.com/something" target="_blank">Something else here</a>
+      <a href="/" th:href="@{/logout}" target="_blank">Logout</a>
+
     </div>
 
   </div>
 </div>
-
-
 </nav>
 <div class="container">
   <div class="row">
@@ -86,7 +81,7 @@
   </div>
   <div class="row">
     <div class="co-lg-3">
-      <a th:href ="@{/patient/appoitment/new}" class="btn btn-primary btn-sm mb-3" >Add appointment</a>
+      <a th:href ="@{appointment/new}" class="btn btn-primary btn-sm mb-3" >Add appointment</a>
 
     </div>
 
@@ -96,26 +91,23 @@
     <thead class="thead-light">
     <tr>
       <th scope="col">id</th>
-      <th scope="col">Doctor name</th>
-      <th scope="col">Patient name</th>
+      <th scope="col">Doctor</th>
+      <th scope="col">Patient</th>
       <th scope="col">TimeLine</th>
       <th scope="col">location</th>
       <th scope="col">status</th>
-<!--      <th scope="col">Sex</th>
-      <th scope="col">Sex</th>
-      <th scope="col">Role</th>-->
       <th scope="col">Action</th>
     </tr>
     </thead>
     <tbody>
 
     <tr th:each="reservation: ${reservations}">
-      <td th:text="${reservation.id}"></td>
-      <td th:text="${reservation.doctor.name}"></td>
-      <td th:text="${reservation.patient.name}"></td>
-      <td th:text="${reservation.getTimeLine()}"></td>
-      <td th:text="${reservation.location}"></td>
-      <td th:text="${reservation.status}"></td>
+      <td th:text="${reservation.getId()}"></td>
+      <td th:text="${reservation.getDoctorName()}"></td>
+      <td th:text="${reservation.getPatientName()}"></td>
+      <td th:text="${reservation.getAppointmentTime()}"></td>
+      <td th:text="${reservation.getLocation()}"></td>
+      <td th:text="${reservation.getStatus()}"></td>
 <!--      <td th:text="${patient.getAge()}"></td>
       <td th:text="${patient.getSex()}"></td>
       <td th:text="${patient.getRole()}"></td>-->
@@ -127,6 +119,17 @@
 
     </tbody>
   </table>
+  <!-- Pagination links -->
+  <div class="pagination">
+    <ul>
+      <li th:if="${reservations.hasPrevious()}">
+        <a th:href="@{/appointment(page=${reservations.previousPageable().pageNumber})}">&laquo; Previous</a>
+      </li>
+      <li th:if="${reservations.hasNext()}">
+        <a th:href="@{/appointment(page=${reservations.nextPageable().pageNumber})}">Next &raquo;</a>
+      </li>
+    </ul>
+  </div>
 </div>
 </body>
 </html>

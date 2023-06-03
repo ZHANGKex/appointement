@@ -17,11 +17,13 @@
 <body class="tem">
 	<nav class="main-nav overlay clearfix ten">
 	<ul id="menu">
-        <li class="nav-home nav-current" role="presentation"><a href="/home">Home</a></li>
-        <li class="nav-about-us" role="presentation"><a href="/doctor">Doctor</a></li>
-        <li class="nav-author-page" role="presentation"><a href="/announcement">Announcement</a></li>
-        <li class="nav-author-page" role="presentation"><a href="/science">Science</a></li>
-        <li class="nav-article-example" role="presentation"><a href="/register">Registration</a></li>
+        <li><a href="/home">Home</a></li>
+        <li><a th:href="@{/personal}" sec:authorize="isAuthenticated()">Personal Page</a>
+            <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Personal Page</a></li>
+        <li><a href="/announcement">Announcement</a></li>
+        <li><a href="/science">Science</a></li>
+        <li><a href="/appointment/patient/search"th:href="@{/reservation}" sec:authorize="isAuthenticated()">Reservation</a>
+            <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Reservation</a>
 		<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 	</ul>
 	</nav>
@@ -29,18 +31,18 @@
     <div class="background"></div>
     <div class="main-container">
         <div class="signup-container">
-            <div class="card-header"><h3 class="text-center font-weight-light my-4">病人登录</h3></div>
+            <div class="card-header"><h3 class="text-center font-weight-light my-4"></h3></div>
             <form th:action="@{/login}" method="post">
                 <!--error message-->
                 <div th:if = "${param.error}" >
-                    <div class="alert alert-danger" th:text="${Exception}">Invalid </div>
+                    <div class="alert alert-danger" >Invalid email or password</div>
                 </div>
 
                 <!--logout message-->
                 <div th:if = "${param.logout}">
                     <div class="alert alert-info">You've been logged out </div>
                 </div>
-
+                <input type="hidden" id="autype" name="autype" value="patient">
                 <label for="email">Email:</label>
                 <input type="email" id="username" name="username" required>
 

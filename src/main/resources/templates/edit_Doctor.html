@@ -9,15 +9,15 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#" th:href="@{/patient}">Patient Management</a>
+  <a class="navbar-brand" href="#" th:href="@{/doctor}">Doctor Management</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="#" th:href="@{/home}">Home <span class="sr-only"></span></a>
-      <a class="nav-item nav-link active" href="#" th:href="@{/patient}">Patient <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link " href="#" th:href="@{/doctor}">Doctor <span class="sr-only"></span></a>
+      <a class="nav-item nav-link" href="#" th:href="@{/patient}">Patient <span class="sr-only"></span></a>
+      <a class="nav-item nav-link active" href="#" th:href="@{/doctor}">Doctor <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
     </div>
   </div>
@@ -26,9 +26,9 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-      <h1 class="text-center">Edit Patient</h1>
+      <h1 class="text-center">Edit Doctor</h1>
       <div class="card-body">
-        <form th:action="@{/patient/{id}(id=${patient.id})}" th:object="${patient}" method="post">
+        <form th:action="@{/doctor/{id}(id=${doctor.idDoc})}" th:object="${doctor}" method="post">
           <div class="form-group">
             <label>Name:</label>
             <input
@@ -65,17 +65,7 @@
                     type="date"
                     name="birthday"
                     th:field = "*{birthday}"
-                    th:value="${patient.birthday ?: '1949-10-01'}"
                     class="form-control"/>
-          </div>
-          <div class="form-group">
-            <label>id Number:</label>
-            <input
-                    type="text"
-                    name="idNumber"
-                    th:field = "*{idNumber}"
-                    class="form-control"
-                    placeholder="Enter new idNumber"/>
           </div>
 
           <div class="form-group">
@@ -86,6 +76,33 @@
                     th:field = "*{telephone}"
                     class="form-control"
                     placeholder="Enter new telephone"/>
+          </div>
+          <div class="form-group">
+            <label>dept:</label>
+            <input
+                    type="text"
+                    name="ideptName"
+                    th:field = "*{deptName}"
+                    class="form-control"
+                    placeholder="Enter new dept"/>
+          </div>
+          <div class="form-group">
+            <label>Speciality:</label>
+            <input
+                    type="text"
+                    name="specialty"
+                    th:field = "*{specialty}"
+                    class="form-control"
+                    placeholder="Enter new specialty"/>
+          </div>
+          <div class="form-group">
+            <label>educationBackground:</label>
+            <input
+                    type="text"
+                    name="educationBackground"
+                    th:field = "*{educationBackground}"
+                    class="form-control"
+                    placeholder="Enter new educationBackground"/>
           </div>
           <div class="form-group">
             <label>Sex:</label>

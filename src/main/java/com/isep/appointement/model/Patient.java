@@ -11,6 +11,7 @@ import java.time.Period;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table
@@ -57,6 +58,9 @@ public class Patient implements UserDetails {
 
     @Column(name = "job", length = 20)
     private String job;
+
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Reservation> reservations;
 
     @Lob
     private String allergens;
@@ -124,7 +128,7 @@ public class Patient implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(Roles.Patient.name());
         return Collections.singletonList(authority);
     }
 

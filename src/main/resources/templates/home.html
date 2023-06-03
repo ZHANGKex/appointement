@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../static/newcss/font.css">
     <link rel="stylesheet" href="../static/iconfont/download/iconfont01/iconfont.css">
     <link rel="stylesheet" href="../static/newcss/mobile.css">
-    <title>Xiehe Hospital</title>
+    <title></title>
 </head>
 <body>
     <header>
@@ -18,7 +18,7 @@
             <ul class="header_list flexBox">
                 <li class="logo"><img src="../static/img/logo1.png" alt=""></li>
             </ul>
-            <h2>Xiehe Hospital</h2>
+            <h2>Click to continue</h2>
 			<br>
             <div class="enter">
                 <a href="#enter"><i class="../static/iconfont icon-jiantouxia"></i></a>
@@ -29,10 +29,12 @@
         <div class="sec_nav container">
             <ul id="enter" class="flexBox flexCenter">
                 <li><a href="/home">Home</a></li>
-                <li><a href="/doctor">Doctor</a></li>
+                <li><a th:href="@{/personal}" sec:authorize="isAuthenticated()">Personal Page</a>
+                    <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Personal Page</a></li>
                 <li><a href="/announcement">Announcement</a></li>
                 <li><a href="/science">Science</a></li>
-				<li><a href="/register">Registration</a></li>
+                <li><a href="/appointment/patient/search" th:href="@{/reservation}" sec:authorize="isAuthenticated()">Reservation</a>
+                    <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Reservation</a>
             </ul>
         </div>
         <div class="sec_bgback">
@@ -42,19 +44,17 @@
                         <h2>Click here for</h2>
                         <h2>registration</h2>
                     </div>
-                    <div sec:authorize = "isAuthenticated()"><button><a href="/" th:href="@{/logout}">Logout</a></button></div>
+                    <div sec:authorize="isAuthenticated()">
+                        <button><a href="/" th:href="@{/logout}">Logout</a></button>
+                    </div>
+                    <div sec:authorize="!isAuthenticated()">
+                        <button><a href="/login">Login</a></button>
+                    </div>
 
                     <h2><br></h2>
-                    <button><a href="Registration.html" th:href="@{/register}">Register</a></button>
+                    <button><a href="/" th:href="@{/register}">Register</a></button>
 
                 </div>
-<!--                <div class="sec_leftWrite" >
-                    <div class="sec_headline">
-                        <h2>Click here for</h2>
-                        <h2>logout</h2>
-                    </div>
-                    <button ><a  ><p class="nav-item">Logout</p></a></button>
-                </div>-->
                 <div class="sec_rightPic">
                     <div class="pic_center">
                         <img src="../static/img/about-img.svg" alt="">
@@ -84,11 +84,11 @@
     <footer>
         <div class="footbody container">
             <ul class="flexBox flexCenter">
-                <li>About us</li>
-                <li class="bigWrite"><a href="/home">Xiehe Hospital</a></li>
+                <a href="/aboutus"><li>About us</li></a>
+                <li class="bigWrite"><a href="/home">Wahaha</a></li>
                 <li>Sggestions</li>    
             </ul>
-            <p>Contact us</p>
+            <a href="/contactus"><p>Contact us</p></a>
             <p>XXX-XXXX-XXXX</p>
         </div>
     </footer>
