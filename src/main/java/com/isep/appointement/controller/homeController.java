@@ -12,12 +12,12 @@ public class homeController {
 
     @GetMapping("/")
     public String mainPage() {
-        return "首页";
+        return "home";
     }
 
     @GetMapping("/home")
     public String index() {
-        return "首页";
+        return "home";
     }
 
     @GetMapping("/doctor")
@@ -27,7 +27,7 @@ public class homeController {
 
     @GetMapping("/announcement")
     public String announcement() {
-        return "公告";
+        return "announcement";
     }
 
     @GetMapping("/science")

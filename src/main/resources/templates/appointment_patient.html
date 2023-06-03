@@ -2,29 +2,29 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>医院挂号预约系统</title>
+  <title>Hospital Appointment Booking System</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<h1>欢迎使用医院挂号预约系统</h1>
-<h2>请选择医生:</h2>
+<h1>Welcome to the Hospital Appointment Booking System</h1>
+<h2>Please select a doctor:</h2>
 <div id="doctor-list">
-  <!-- 动态生成医生列表 -->
+  <!-- Dynamically generated doctor list -->
 </div>
-<h2>请选择预约时间:</h2>
+<h2>Please select an appointment time:</h2>
 <details>
-  <summary>选择预约地点(非必选)</summary>
+  <summary>Select appointment location (optional)</summary>
   <div id="place-list">
-    <!-- 动态生成预约地点列表 -->
+    <!-- Dynamically generated location list -->
   </div>
 </details>
 <details>
-  <summary>选择预约时间(必选)</summary>
+  <summary>Select appointment time (required)</summary>
   <div id="time-list">
-    <!-- 动态生成预约时间列表 -->
+    <!-- Dynamically generated time list -->
   </div>
 </details>
-<button onclick="submitAppointment()">提交预约</button>
+<button onclick="submitAppointment()">Submit Appointment</button>
 <script src="js/script.js"></script>
 </body>
 </html>
