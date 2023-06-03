@@ -897,6 +897,8 @@ body.nav-opened .nav {
 	background:#f7faf9;
 	box-shadow: none;
 }
+
+
 /* Add a little circle in the middle of the border-bottom on our .post just for the lolz and stylepoints. */
 .post:after {
 	display:block;
