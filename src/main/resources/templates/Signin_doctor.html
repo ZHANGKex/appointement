@@ -16,6 +16,34 @@
 	</style>
     </head>
 <body class="tem">
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        // prevent form from submitting
+        event.preventDefault();
+
+        // check email
+        var email = document.getElementById('username').value;
+        if (!email.includes('@')) { // very basic validation
+            document.getElementById('emailError').style.display = 'block';
+        } else {
+            document.getElementById('emailError').style.display = 'none';
+        }
+
+        // check password
+        var password = document.getElementById('password').value;
+        if (password.length < 8) { // very basic validation
+            document.getElementById('passwordError').style.display = 'block';
+        } else {
+            document.getElementById('passwordError').style.display = 'none';
+        }
+
+        // if no errors, submit form
+        if (email.includes('@') && password.length >= 8) {
+            this.submit();
+        }
+    });
+</script>
+
 	<nav class="main-nav overlay clearfix ten">
 	<ul id="menu">
         <li><a href="/home">Home</a></li>
@@ -47,9 +75,12 @@
                 <input type="hidden" id="autype" name="autype" value="doctor">
                 <label for="email">Email:</label>
                 <input type="email" id="username" name="username" required>
+                <span id="emailError" class="error-message" style="display:none">请输入有效的邮箱地址</span>
 
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
+                <span id="passwordError" class="error-message" style="display:none">请输入有效的密码</span>
+
 
                 <button type="submit" class="btn btn-success" >Login</button>
 
