@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>预检分诊问卷</title>
+    <title>Pre-check Triage Questionnaire</title>
     <link rel="stylesheet" href="../static/css/style.css">
     <style>
         .hidden {
@@ -12,95 +12,99 @@
     </style>
 </head>
 <body>
-<h1>请问您哪里不舒服？</h1>
+<h1>Where do you feel discomfort?</h1>
 <div class="select-container">
     <select class="styled-select" id="discomfortLocation" onchange="displayQuestions()">
-        <option value="" disabled selected>选择部位</option>
-        <option value="head">头部</option>
-        <option value="abdomen">腹部</option>
-        <option value="chest">胸部</option>
-        <option value="leg">腿部</option>
+        <option value="" disabled selected>Select location</option>
+        <option value="head">Head</option>
+        <option value="abdomen">Abdomen</option>
+        <option value="chest">Chest</option>
+        <option value="leg">Leg</option>
     </select>
 </div>
 
 <div id="headQuestions" class="hidden">
-    <h2>如果您选择了“头部”，请回答以下问题：</h2>
-    <h3>您的头痛是否伴随着其他症状：</h3>
+    <h2>If you chose "Head", please answer the following questions:</h2>
+    <h3>Does your headache come with other symptoms:</h3>
     <input type="radio" id="optionA1" name="headacheSymptoms" value="A">
-    <label for="optionA1">A. 疲劳、紧张，失眠、记忆减退，情绪不稳定</label><br>
+    <label for="optionA1">A. Fatigue, tension, insomnia, memory loss, emotional instability</label><br>
     <input type="radio" id="optionB1" name="headacheSymptoms" value="B">
-    <label for="optionB1">B. 恶心呕吐，一侧肢体活动不力，不能言语</label><br>
+    <label for="optionB1">B. Nausea and vomiting, one-sided limb weakness, speechlessness</label><br>
     <input type="radio" id="optionC1" name="headacheSymptoms" value="C">
-    <label for="optionC1">C. 眩晕、耳鸣，或者鼻塞、流脓性鼻涕或带血</label><br>
+    <label for="optionC1">C. Dizziness, tinnitus, or nasal congestion, purulent or bloody nasal discharge</label><br>
     <input type="radio" id="optionD1" name="headacheSymptoms" value="D">
-    <label for="optionD1">D. 高血压或患有肾脏疾病，或者头痛伴有发烧</label><br>
+    <label for="optionD1">D. High blood pressure or kidney disease, or headache accompanied by fever</label><br>
     <input type="radio" id="optionE1" name="headacheSymptoms" value="E">
-    <label for="optionE1">E. 光敏感，视力模糊或眼周围及眶上方疼痛</label><br>
+    <label for="optionE1">E. Photosensitivity, blurred vision or pain around the eyes and on the orbital region</label><br>
     <input type="radio" id="optionF1" name="headacheSymptoms" value="F">
-    <label for="optionF1">F. 常与头部水平转动密切相关，伴随头晕和手臂麻木</label><br>
+    <label for="optionF1">F. Closely related to horizontal rotation of the head, accompanied by dizziness and arm numbness</label><br>
     <input type="radio" id="optionG1" name="headacheSymptoms" value="G">
-    <label for="optionG1">G. 您是否遭受了外伤，是否流血</label><br>
-    <button onclick="showSuggestion()">提交</button>
+    <label for="optionG1">G. Have you suffered from trauma, is there any bleeding</label><br>
+    <button onclick="showSuggestion()">Submit</button>
 </div>
+
 
 <div id="abdomenQuestions" class="hidden">
-    <h2>如果您选择了“腹部”，请回答以下问题：</h2>
-    <h3>您的腹痛是否伴随着其他症状：</h3>
+    <h2>If you chose "Abdomen", please answer the following questions:</h2>
+    <h3>Does your abdominal pain come with other symptoms:</h3>
     <input type="radio" id="optionA2" name="abdomenSymptoms" value="A">
-    <label for="optionA2">A. 右上下腹疼痛</label><br>
+    <label for="optionA2">A. Pain in the upper and lower right abdomen</label><br>
     <input type="radio" id="optionB2" name="abdomenSymptoms" value="B">
-    <label for="optionB2">B. 中上腹疼痛</label><br>
+    <label for="optionB2">B. Pain in the upper middle abdomen</label><br>
     <input type="radio" id="optionC2" name="abdomenSymptoms" value="C">
-    <label for="optionC2">C. 左上腹疼痛</label><br>
+    <label for="optionC2">C. Pain in the upper left abdomen</label><br>
     <input type="radio" id="optionD2" name="abdomenSymptoms" value="D">
-    <label for="optionD2">D. 中下部疼痛</label><br>
+    <label for="optionD2">D. Pain in the lower middle abdomen</label><br>
     <input type="radio" id="optionE2" name="abdomenSymptoms" value="E">
-    <label for="optionE2">E. 整个腹腔的疼痛</label><br>
+    <label for="optionE2">E. Pain throughout the abdominal cavity</label><br>
     <input type="radio" id="optionF2" name="abdomenSymptoms" value="F">
-    <label for="optionF2">F. 疼痛比较剧烈，甚至难以忍受</label><br>
-    <button onclick="showSuggestion()">提交</button>
+    <label for="optionF2">F. Severe pain, even unbearable</label><br>
+    <button onclick="showSuggestion()">Submit</button>
 </div>
 
+
 <div id="chestQuestions" class="hidden">
-    <h2>如果您选择了“胸部”，请回答以下问题：</h2>
-    <h3>您的腹痛是否伴随着其他症状：</h3>
+    <h2>If you chose "Chest", please answer the following questions:</h2>
+    <h3>Does your abdominal pain come with other symptoms:</h3>
     <input type="radio" id="optionA3" name="chestSymptoms" value="A">
-    <label for="optionA3">A. 伴有咳嗽、深吸气或呼气时加重</label><br>
+    <label for="optionA3">A. Comes with cough, worsens when taking deep breaths or exhaling</label><br>
     <input type="radio" id="optionB3" name="chestSymptoms" value="B">
-    <label for="optionB3">B. 运动后突然出现剧烈胸痛，并伴有呼吸困难</label><br>
+    <label for="optionB3">B. Sudden severe chest pain after exercise, accompanied by difficulty breathing</label><br>
     <input type="radio" id="optionC3" name="chestSymptoms" value="C">
-    <label for="optionC3">C. 前胸后背突然出现性质为撕裂性疼痛，并伴血压升高</label><br>
+    <label for="optionC3">C. Sudden tearing pain in the chest and back, accompanied by high blood pressure</label><br>
     <input type="radio" id="optionD3" name="chestSymptoms" value="D">
-    <label for="optionD3">D. 胸口或胸前疼痛，有压迫感，伴有心慌气短</label><br>
+    <label for="optionD3">D. Pain in the chest or sternum, feeling of pressure, accompanied by palpitations and shortness of breath</label><br>
     <input type="radio" id="optionE3" name="chestSymptoms" value="E">
-    <label for="optionE3">E. 因骨折等外伤所致，弯腰、侧弯时疼痛加剧</label><br>
-    <button onclick="showSuggestion()">提交</button>
+    <label for="optionE3">E. Due to fractures or other injuries, the pain worsens when bending over or bending sideways</label><br>
+    <button onclick="showSuggestion()">Submit</button>
 </div>
 
 
 <div id="legQuestions" class="hidden">
-    <h2>如果您选择了“腿部”，请回答以下问题：</h2>
-    <h3>您的腿痛是否伴随着其他症状：</h3>
+    <h2>If you chose "Leg", please answer the following questions:</h2>
+    <h3>Does your leg pain come with other symptoms:</h3>
     <input type="radio" id="optionA5" name="legSymptoms" value="A">
-    <label for="optionA5">A. 下肢外侧痛，痛感延伸到屁股或腰部</label><br>
+    <label for="optionA5">A. Pain on the outside of the lower limb, the pain extends to the buttocks or waist</label><br>
     <input type="radio" id="optionB5" name="legSymptoms" value="B">
-    <label for="optionB5">B. 运动后，大小腿部的关节出现疼痛</label><br>
+    <label for="optionB5">B. Pain in the joints of the thighs and calves after exercise</label><br>
     <input type="radio" id="optionC5" name="legSymptoms" value="C">
-    <label for="optionC5">C. 踝关节和足趾关节出现红肿疼痛，并有热感，特别是出现在吃海鲜或啤酒之后</label><br>
+    <label for="optionC5">C. Redness, swelling, and pain in the ankle and toe joints, with a feeling of heat, especially after eating seafood or beer</label><br>
     <input type="radio" id="optionD5" name="legSymptoms" value="D">
-    <label for="optionD5">D. 久坐后出现小腿肚子肿胀，手指按压出现疼痛，走路时疼而休息可以缓解</label><br>
+    <label for="optionD5">D. Swelling in the calves and pain upon finger pressure after sitting for a long time, pain when walking but rest can relieve it</label><br>
     <input type="radio" id="optionE5" name="legSymptoms" value="E">
-    <label for="optionE5">E. 膝关节或手的小关节等全身多处关节出现两侧对称性疼痛</label><br>
-    <button onclick="showSuggestion()">提交</button>
+    <label for="optionE5">E. Symmetrical pain in multiple joints throughout the body, such as the knee joints or small joints of the hand</label><br>
+    <button onclick="showSuggestion()">Submit</button>
 </div>
+
 
 <div id="suggestion" class="hidden">
     <div id="popup" class="popup">
-        <h2>建议您找：</h2>
+        <h2>We suggest you to consult with:</h2>
         <p id="department"></p>
-        <button onclick="returnToSelection()">返回</button>
+        <button onclick="returnToSelection()">Return</button>
     </div>
 </div>
+
 
 
 
@@ -167,77 +171,78 @@
 
         switch (selectedOption) {
             case "A1":
-                suggestedDepartment = "神经内科";
+                suggestedDepartment = "Neurology";
                 break;
             case "B1":
-                suggestedDepartment = "急诊神经内科";
+                suggestedDepartment = "Emergency Neurology";
                 break;
             case "C1":
-                suggestedDepartment = "耳鼻喉科";
+                suggestedDepartment = "Otorhinolaryngology (ENT)";
                 break;
             case "D1":
-                suggestedDepartment = "内科";
+                suggestedDepartment = "Internal Medicine";
                 break;
             case "E1":
-                suggestedDepartment = "眼科";
+                suggestedDepartment = "Ophthalmology";
                 break;
             case "F1":
-                suggestedDepartment = "脊柱外科或康复科";
+                suggestedDepartment = "Spine Surgery or Physical Therapy";
                 break;
             case "G1":
-                suggestedDepartment = "神经外科";
+                suggestedDepartment = "Neurosurgery";
                 break;
             case "A2":
-                suggestedDepartment = "外科";
+                suggestedDepartment = "Surgery";
                 break;
             case "B2":
-                suggestedDepartment = "消化内科";
+                suggestedDepartment = "Gastroenterology";
                 break;
             case "C2":
-                suggestedDepartment = "普外科或消化内科";
+                suggestedDepartment = "General Surgery or Gastroenterology";
                 break;
             case "D2":
-                suggestedDepartment = "妇科或者泌尿外科";
+                suggestedDepartment = "Gynecology or Urology";
                 break;
             case "E2":
-                suggestedDepartment = "消化内科";
+                suggestedDepartment = "Gastroenterology";
                 break;
             case "F2":
-                suggestedDepartment = "急诊科或者拨打急救电话";
+                suggestedDepartment = "Emergency Medicine or call the emergency number";
                 break;
             case "A3":
-                suggestedDepartment = "呼吸科或胸外科";
+                suggestedDepartment = "Respiratory Medicine or Thoracic Surgery";
                 break;
             case "B3":
-                suggestedDepartment = "胸外科";
+                suggestedDepartment = "Thoracic Surgery";
                 break;
             case "C3":
-                suggestedDepartment = "急诊科或血管外科";
+                suggestedDepartment = "Emergency Medicine or Vascular Surgery";
                 break;
             case "D3":
-                suggestedDepartment = "心内科";
+                suggestedDepartment = "Cardiology";
                 break;
             case "E3":
-                suggestedDepartment = "骨科或胸外科";
+                suggestedDepartment = "Orthopedics or Thoracic Surgery";
                 break;
             case "A4":
-                suggestedDepartment = "骨科的脊柱外科";
+                suggestedDepartment = "Spine Surgery in Orthopedics";
                 break;
             case "B4":
-                suggestedDepartment = "骨科";
+                suggestedDepartment = "Orthopedics";
                 break;
             case "C4":
-                suggestedDepartment = "内分泌科或风湿免疫科";
+                suggestedDepartment = "Endocrinology or Rheumatology";
                 break;
             case "D4":
-                suggestedDepartment = "血管外科";
+                suggestedDepartment = "Vascular Surgery";
                 break;
             case "E4":
-                suggestedDepartment = "风湿免疫科";
+                suggestedDepartment = "Rheumatology";
                 break;
             default:
-                suggestedDepartment = "未知";
+                suggestedDepartment = "Unknown";
         }
+
 
         sectionsToHide.forEach((section) => {
             section.classList.add("hidden");
